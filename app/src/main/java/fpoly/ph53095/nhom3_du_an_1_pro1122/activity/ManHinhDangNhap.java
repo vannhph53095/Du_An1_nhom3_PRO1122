@@ -70,7 +70,7 @@ public class ManHinhDangNhap extends AppCompatActivity {
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 Toast.makeText(ManHinhDangNhap.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
 
-                                startActivity(new Intent(ManHinhDangNhap.this, MainActivity.class));
+                                startActivity(new Intent(ManHinhDangNhap.this, TrangChu.class));
                                 finish();
                             } else {
                                 Toast.makeText(ManHinhDangNhap.this, "Sai tài khoản hoặc mật khẩu", Toast.LENGTH_SHORT).show();

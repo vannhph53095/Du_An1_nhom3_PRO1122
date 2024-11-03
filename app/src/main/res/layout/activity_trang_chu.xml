@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffff"
+    android:id="@+id/main"
+    tools:context=".activity.TrangChu">
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="3">
+
+        <ImageView
+            android:src="@drawable/logoungdung"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_vertical" />
+
+        <TextView
+            android:text="Phim Moi"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textSize="25sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPagerMain"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="#000000" />
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:queryHint="Tìm kiếm film"
+        android:iconifiedByDefault="false"
+        android:background="#e0e0e0"
+        android:layout_margin="8dp" />
+
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_marginHorizontal="10dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Sci-fi"
+                android:textSize="8sp"
+                android:background="@drawable/button_chip_background"
+                android:textColor="#000" />
+
+            <Button android:layout_marginHorizontal="10dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Fantasy"
+                android:textSize="8sp"
+                android:background="@drawable/button_chip_background"
+                android:textColor="#000" />
+
+            <Button android:layout_marginHorizontal="10dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Romance"
+                android:textSize="8sp"
+                android:background="@drawable/button_chip_background"
+                android:textColor="#000" />
+
+            <Button android:layout_marginHorizontal="10dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="School"
+                android:textSize="8sp"
+                android:background="@drawable/button_chip_background"
+                android:textColor="#000" />
+
+            <Button android:layout_marginHorizontal="10dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Action"
+                android:textSize="8sp"
+                android:background="@drawable/button_chip_background"
+                android:textColor="#000" />
+
+            <Button android:layout_marginHorizontal="10dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Horror"
+                android:textSize="8sp"
+                android:background="@drawable/button_chip_background"
+                android:textColor="#000" />
+
+            <Button android:layout_marginHorizontal="10dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Horror"
+                android:textSize="8sp"
+                android:background="@drawable/button_chip_background"
+                android:textColor="#000" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:padding="8dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:padding="8dp"
+            android:gravity="center_horizontal">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:src="@drawable/mat_biec"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:text="Film 1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:textSize="12sp"
+                android:gravity="center_horizontal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:padding="8dp"
+            android:gravity="center_horizontal">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:src="@drawable/hary_potter"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:text="Film 2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:textSize="12sp"
+                android:gravity="center_horizontal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:padding="8dp"
+            android:gravity="center_horizontal">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:src="@drawable/avenger"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:text="Film 3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:textSize="12sp"
+                android:gravity="center_horizontal" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:padding="8dp"
+            android:gravity="center_horizontal">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:src="@drawable/mat_biec"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:text="Film 1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:textSize="12sp"
+                android:gravity="center_horizontal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:padding="8dp"
+            android:gravity="center_horizontal">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:src="@drawable/hary_potter"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:text="Film 2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:textSize="12sp"
+                android:gravity="center_horizontal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:padding="8dp"
+            android:gravity="center_horizontal">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:src="@drawable/avenger"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:text="Film 3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:textSize="12sp"
+                android:gravity="center_horizontal" />
+        </LinearLayout>
+
+    </GridLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#333333"
+            android:gravity="center"
+            android:layout_alignParentBottom="true">
+
+            <ImageView
+                android:layout_weight="1"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:src="@drawable/home_icon"
+                android:padding="16dp"
+                app:tint="#FFFFFF" />
+
+            <ImageView
+                android:layout_weight="1"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:src="@drawable/heart_ic"
+                android:padding="16dp"
+                app:tint="#FFFFFF" />
+
+            <ImageView
+                android:layout_weight="1"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:src="@drawable/accout_ic"
+                android:padding="16dp"
+                app:tint="#FFFFFF" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>
