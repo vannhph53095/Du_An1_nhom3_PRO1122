@@ -1,4 +1,4 @@
-package fpoly.ph53095.nhom3_du_an_1_pro1122;
+package fpoly.ph53095.nhom3_du_an_1_pro1122.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,8 @@ import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 import java.util.Objects;
+
+import fpoly.ph53095.nhom3_du_an_1_pro1122.R;
 
 public class viewPagerAdapter extends PagerAdapter {
 

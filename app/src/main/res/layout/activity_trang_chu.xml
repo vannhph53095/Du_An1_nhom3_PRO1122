@@ -117,7 +117,7 @@
         </LinearLayout>
     </HorizontalScrollView>
 
-    <!-- Recommended Section -->
+
     <TextView
         android:text="Khuyến Khích xem"
         android:layout_width="match_parent"
@@ -137,7 +137,7 @@
             android:layout_height="wrap_content"
             android:padding="8dp">
 
-            <!-- Repeatable Movie Item Layout -->
+
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
@@ -259,11 +259,11 @@
                     android:gravity="center_horizontal" />
             </LinearLayout>
 
-            <!-- Add more movie items here as needed -->
+
         </LinearLayout>
     </HorizontalScrollView>
 
-    <!-- New Movies Section -->
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -278,7 +278,7 @@
         android:layout_height="wrap_content"
         android:padding="8dp" />
 
-    <!-- Bottom Navigation -->
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -308,6 +308,7 @@
                 app:tint="#FFFFFF" />
 
             <ImageView
+                android:id="@+id/accout_ic"
                 android:layout_weight="1"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
