@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 import java.util.Objects;
 
-public class ViewPagerAdapter extends PagerAdapter {
+public class viewPagerAdapter extends PagerAdapter {
 
     // Context object
     Context context;
@@ -23,7 +23,7 @@ public class ViewPagerAdapter extends PagerAdapter {
 
 
     // Viewpager Constructor
-    public ViewPagerAdapter(Context context, int[] images) {
+    public viewPagerAdapter(Context context, int[] images) {
         this.context = context;
         this.images = images;
         mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -64,6 +64,3 @@ public class ViewPagerAdapter extends PagerAdapter {
         container.removeView((LinearLayout) object);
     }
 }
-
-
-

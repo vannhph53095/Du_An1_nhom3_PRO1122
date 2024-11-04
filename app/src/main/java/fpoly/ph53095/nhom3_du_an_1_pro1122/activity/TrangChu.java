@@ -9,7 +9,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import fpoly.ph53095.nhom3_du_an_1_pro1122.R;
-import fpoly.ph53095.nhom3_du_an_1_pro1122.ViewPagerAdapter;
+import fpoly.ph53095.nhom3_du_an_1_pro1122.viewPagerAdapter;
 
 public class TrangChu extends AppCompatActivity {
     private ViewPager mViewPager;
@@ -33,7 +33,7 @@ public class TrangChu extends AppCompatActivity {
 
 
         mViewPager = findViewById(R.id.viewPagerMain);
-        ViewPagerAdapter mViewPagerAdapter = new ViewPagerAdapter(this, images);
+        viewPagerAdapter mViewPagerAdapter = new viewPagerAdapter(this, images);
         mViewPager.setAdapter(mViewPagerAdapter);
     }
 }
