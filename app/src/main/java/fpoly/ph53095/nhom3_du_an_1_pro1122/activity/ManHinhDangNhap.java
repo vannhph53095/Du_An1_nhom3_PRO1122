@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -46,6 +47,15 @@ public class ManHinhDangNhap extends AppCompatActivity {
         txtPassword = findViewById(R.id.txtpassword);
         mAuth = FirebaseAuth.getInstance();
         btndenmanhinhdangky=findViewById(R.id.btndenmanhinhdangky);
+        TextView btnTextClickable = findViewById(R.id.btn_text_clickable);
+        btnTextClickable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               Intent intent = new Intent(ManHinhDangNhap.this, KeoMatKhau.class);
+                startActivity(intent);// Thực hiện hành động khi người dùng ấn vào
+            }
+        });
+
 
         btnDangNhap.setOnClickListener(v -> {
             String emailInput = txtEmail.getText().toString().trim();

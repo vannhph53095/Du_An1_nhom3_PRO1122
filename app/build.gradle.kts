@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "fpoly.ph53095.nhom3_du_an_1_pro1122"
-        minSdk = 29
+        minSdk = 28
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -43,8 +43,5 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
-    implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
 
-
-    implementation("com.google.firebase:firebase-firestore")
 }
