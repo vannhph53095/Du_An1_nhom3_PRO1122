@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "805924747412",
+    "project_id": "nhom3-du-anpro1122",
+    "storage_bucket": "nhom3-du-anpro1122.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:805924747412:android:55dc177087db80a8e85c81",
+        "android_client_info": {
+          "package_name": "fpoly.ph53095.nhom3_du_an_1_pro1122"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5roYct7nDnnyfFa8F1ZnlFmtQLLYGIZI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

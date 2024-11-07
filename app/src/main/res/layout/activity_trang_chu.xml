@@ -24,7 +24,7 @@
             android:layout_gravity="center_vertical" />
 
         <TextView
-            android:text="Phim Moi"
+            android:text="Welcome"
             android:gravity="center"
             android:layout_gravity="center"
             android:textSize="25sp"
