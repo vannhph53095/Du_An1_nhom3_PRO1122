@@ -1,0 +1,208 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:layout_above="@+id/bottomNavigation">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/main"
+            tools:context=".activity.TrangChu">
+
+            <!-- Bắt đầu nội dung chính -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:weightSum="3">
+
+                <ImageView
+                    android:src="@drawable/logoungdung"
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center_vertical" />
+
+                <TextView
+                    android:text="Welcome"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textSize="25sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPagerMain"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="#000000" />
+
+            <SearchView
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:queryHint="Tìm kiếm phim"
+                android:iconifiedByDefault="false"
+                android:background="#E0E0E0"
+                android:layout_margin="8dp" />
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CEF6E1"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="5">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_chip_background"
+                        android:text="Sci-fi"
+                        android:textColor="#000"
+                        android:textSize="8sp" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_chip_background"
+                        android:text="Romance"
+                        android:textColor="#000"
+                        android:textSize="8sp" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_chip_background"
+                        android:text="Action"
+                        android:textColor="#000"
+                        android:textSize="8sp" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_chip_background"
+                        android:text="Horror"
+
+                        android:textColor="#000"
+                        android:textSize="8sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:text="Khuyến Khích xem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="#A7A7A7"
+
+                android:textStyle="bold" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <!-- Film Item 1 -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:layout_width="84dp"
+                            android:layout_height="120dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/mat_biec" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:text="Film 1"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <!-- Add more Film Items as needed -->
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="#A7A7A7"
+                android:textStyle="bold"
+                android:text="Phim mới cập nhật" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/bottomNavigation"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#333333"
+        android:gravity="center"
+        android:layout_alignParentBottom="true">
+
+        <ImageView
+            android:layout_weight="1"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:src="@drawable/home_icon"
+            android:padding="16dp"
+            app:tint="#FFFFFF" />
+
+        <ImageView
+            android:layout_weight="1"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:src="@drawable/heart_ic"
+            android:padding="16dp"
+            app:tint="#FFFFFF" />
+
+        <ImageView
+            android:id="@+id/accout_ic"
+            android:layout_weight="1"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:src="@drawable/accout_ic"
+            android:padding="16dp"
+            app:tint="#FFFFFF" />
+    </LinearLayout>
+</RelativeLayout>
