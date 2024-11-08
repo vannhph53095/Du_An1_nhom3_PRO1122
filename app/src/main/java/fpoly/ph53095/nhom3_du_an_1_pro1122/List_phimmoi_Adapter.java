@@ -15,8 +15,7 @@ import fpoly.ph53095.nhom3_du_an_1_pro1122.entity.PhimMoi;
 
 public class List_phimmoi_Adapter extends RecyclerView.Adapter<List_phimmoi_Adapter.ViewHolder> {
 
-    private List<PhimMoi> phimList; // Giả sử bạn có một lớp Phim
-
+    private List<PhimMoi> phimList;
     public List_phimmoi_Adapter(List<PhimMoi> phimList) {
         this.phimList = phimList;
     }
