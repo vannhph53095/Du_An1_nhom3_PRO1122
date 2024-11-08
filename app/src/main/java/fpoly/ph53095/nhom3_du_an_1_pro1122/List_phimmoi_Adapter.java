@@ -50,4 +50,5 @@ public class List_phimmoi_Adapter extends RecyclerView.Adapter<List_phimmoi_Adap
             imgphimmoi = itemView.findViewById(R.id.imgphimmoi);
         }
     }
+
 }

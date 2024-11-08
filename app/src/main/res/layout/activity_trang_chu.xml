@@ -261,7 +261,7 @@
         android:text="Phim mới cập nhật" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_phim_Trang_Chu"
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp" />

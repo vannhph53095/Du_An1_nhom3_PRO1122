@@ -20,8 +20,6 @@ public class Manhinhadmin extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        int a = 5;
-        int b = 10;
-        int c = a + b;
+
     }
 }
