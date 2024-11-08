@@ -1,4 +1,4 @@
-package fpoly.ph53095.nhom3_du_an_1_pro1122;
+package fpoly.ph53095.nhom3_du_an_1_pro1122.Database;
 
 import android.content.ContentValues;
 import android.content.Context;

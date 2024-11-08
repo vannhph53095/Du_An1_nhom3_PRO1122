@@ -17,13 +17,13 @@
             android:name=".activity.KeoMatKhau"
             android:exported="false" />
         <activity
-            android:name=".Manhinhquanlyfilm"
+            android:name=".activity.Manhinhquanlyfilm"
             android:exported="false" />
         <activity
-            android:name=".Manhinhclient"
+            android:name=".activity.Manhinhclient"
             android:exported="false" />
         <activity
-            android:name=".Manhinhadmin"
+            android:name=".activity.Manhinhadmin"
             android:exported="false" />
         <activity
             android:name=".activity.TrangChu"

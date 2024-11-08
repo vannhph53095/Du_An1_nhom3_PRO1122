@@ -2,7 +2,6 @@ package fpoly.ph53095.nhom3_du_an_1_pro1122.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,15 +9,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import java.util.List;
 
-import fpoly.ph53095.nhom3_du_an_1_pro1122.DatabaseHelper;
-import fpoly.ph53095.nhom3_du_an_1_pro1122.List_phimmoi_Adapter;
-import fpoly.ph53095.nhom3_du_an_1_pro1122.Manhinhadmin;
+import fpoly.ph53095.nhom3_du_an_1_pro1122.Database.DatabaseHelper;
+import fpoly.ph53095.nhom3_du_an_1_pro1122.Adapter.List_phimmoi_Adapter;
 import fpoly.ph53095.nhom3_du_an_1_pro1122.R;
 import fpoly.ph53095.nhom3_du_an_1_pro1122.Adapter.viewPagerAdapter;
 import fpoly.ph53095.nhom3_du_an_1_pro1122.entity.PhimMoi;
