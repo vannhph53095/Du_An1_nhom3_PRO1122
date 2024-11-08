@@ -103,5 +103,6 @@ public class ManHinhDangNhap extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 }
