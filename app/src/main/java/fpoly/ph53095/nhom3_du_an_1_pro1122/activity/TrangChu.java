@@ -32,12 +32,12 @@ public class TrangChu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trang_chu);
 
-        // Khởi tạo RecyclerView
+
         recyclerView = findViewById(R.id.recyclerView);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3); // Số 3 là số cột
         recyclerView.setLayoutManager(gridLayoutManager);
 
-        // Khởi tạo DatabaseHelper và thêm dữ liệu nếu cần
+
         databaseHelper = new DatabaseHelper(this);
         if (databaseHelper.getAllPhim().isEmpty()) {
             databaseHelper.addPhim(new PhimMoi("Phim Avengers", R.drawable.iteam4));
@@ -45,25 +45,24 @@ public class TrangChu extends AppCompatActivity {
             databaseHelper.addPhim(new PhimMoi("Siu Pham", R.drawable.avenger));
         }
 
-        // Lấy danh sách phim và thiết lập adapter
+
         List<PhimMoi> phimList = databaseHelper.getAllPhim();
-        adapter = new List_phimmoi_Adapter(phimList);
+        adapter = new List_phimmoi_Adapter(this, phimList); // Sử dụng context để khởi tạo adapter
         recyclerView.setAdapter(adapter);
 
-        // Áp dụng WindowInsets
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        // Khởi tạo ViewPager
         int[] images = { R.drawable.iteam1, R.drawable.iteam2, R.drawable.iteam3, R.drawable.iteam4, R.drawable.iteam5 };
         mViewPager = findViewById(R.id.viewPagerMain);
         viewPagerAdapter mViewPagerAdapter = new viewPagerAdapter(this, images);
         mViewPager.setAdapter(mViewPagerAdapter);
 
-        // Xử lý sự kiện click cho biểu tượng tài khoản
+
         accout_ic = findViewById(R.id.accout_ic);
         accout_ic.setOnClickListener(v -> {
             Intent intent = new Intent(TrangChu.this, Manhinhadmin.class);
