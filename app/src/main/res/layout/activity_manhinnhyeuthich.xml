@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context=".Manhinnhyeuthich">
+    <ImageView
+        android:id="@+id/btnbackinmanhinhyeuthich"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/back_icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
+<TextView
+    android:text="Danh sách yêu thích "
+    android:textSize="30dp"
+    android:textStyle="bold"
+    android:layout_marginTop="60dp"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listyeuthich"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>

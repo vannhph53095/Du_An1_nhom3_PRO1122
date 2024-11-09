@@ -62,13 +62,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#CEF6E1"
+                android:weightSum="5"
                 android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="5">
+
 
                     <Button
                         android:layout_width="wrap_content"
@@ -106,7 +103,7 @@
 
                         android:textColor="#000"
                         android:textSize="8sp" />
-                </LinearLayout>
+
             </LinearLayout>
 
             <TextView
@@ -150,7 +147,7 @@
                             android:textSize="12sp" />
                     </LinearLayout>
 
-                    <!-- Add more Film Items as needed -->
+
                 </LinearLayout>
             </HorizontalScrollView>
 

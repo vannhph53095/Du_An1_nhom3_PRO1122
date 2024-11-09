@@ -34,7 +34,7 @@ public class TrangChu extends AppCompatActivity {
 
 
         recyclerView = findViewById(R.id.recyclerView);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3); // Số 3 là số cột
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
         recyclerView.setLayoutManager(gridLayoutManager);
 
 
@@ -47,7 +47,7 @@ public class TrangChu extends AppCompatActivity {
 
 
         List<PhimMoi> phimList = databaseHelper.getAllPhim();
-        adapter = new List_phimmoi_Adapter(this, phimList); // Sử dụng context để khởi tạo adapter
+        adapter = new List_phimmoi_Adapter(this, phimList);
         recyclerView.setAdapter(adapter);
 
 
@@ -58,15 +58,15 @@ public class TrangChu extends AppCompatActivity {
         });
 
         int[] images = { R.drawable.iteam1, R.drawable.iteam2, R.drawable.iteam3, R.drawable.iteam4, R.drawable.iteam5 };
-        mViewPager = findViewById(R.id.viewPagerMain);
-        viewPagerAdapter mViewPagerAdapter = new viewPagerAdapter(this, images);
+mViewPager = findViewById(R.id.viewPagerMain);
+viewPagerAdapter mViewPagerAdapter = new viewPagerAdapter(this, images);
         mViewPager.setAdapter(mViewPagerAdapter);
 
 
-        accout_ic = findViewById(R.id.accout_ic);
+accout_ic = findViewById(R.id.accout_ic);
         accout_ic.setOnClickListener(v -> {
-            Intent intent = new Intent(TrangChu.this, Manhinhadmin.class);
-            startActivity(intent);
+Intent intent = new Intent(TrangChu.this, Manhinhadmin.class);
+startActivity(intent);
         });
-    }
-}
+                }
+                }
