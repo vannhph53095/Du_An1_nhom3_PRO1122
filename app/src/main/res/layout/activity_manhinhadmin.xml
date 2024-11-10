@@ -58,6 +58,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"/>
     <Button
+        android:id="@+id/btnquanlyfilm"
         android:layout_marginBottom="20dp"
         android:backgroundTint="#86e0b0"
         android:text="Quản Lý Film"

@@ -33,16 +33,24 @@ android {
 }
 
 dependencies {
-
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
-    implementation(libs.firebase.auth)
+
+    // Sử dụng BOM cho Firebase
+    implementation(platform("com.google.firebase:firebase-bom:31.0.0")) // Sử dụng BOM cho Firebase
+    implementation("com.google.firebase:firebase-auth-ktx") // Firebase Auth
+    implementation("com.google.firebase:firebase-firestore-ktx") // Firestore
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+    implementation("androidx.cardview:cardview:1.0.0")
+    implementation("androidx.recyclerview:recyclerview:1.2.1") // Kiểm tra phiên bản mới nhất
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-    implementation ("com.google.android.material:material:1.9.0")
 
-
+    // Cập nhật annotationProcessor cho Glide
+    annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
 }
