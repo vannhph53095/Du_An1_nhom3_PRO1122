@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/editTextTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tiêu đề phim" />
+
+    <EditText
+        android:id="@+id/editTextGenre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Thể loại phim" />
+
+    <EditText
+        android:id="@+id/editTextRating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Đánh giá phim" />
+
+    <EditText
+        android:id="@+id/editTextDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Mô tả phim" />
+
+    <EditText
+        android:id="@+id/editTextDirector"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Đạo diễn phim" />
+
+    <EditText
+        android:id="@+id/editTextReleaseYear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Năm phát hành" />
+
+    <Button
+        android:id="@+id/buttonAddMovie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thêm Phim" />
+</LinearLayout>
