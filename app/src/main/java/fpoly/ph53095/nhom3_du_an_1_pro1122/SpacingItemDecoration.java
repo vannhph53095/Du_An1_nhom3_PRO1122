@@ -21,7 +21,7 @@ public class SpacingItemDecoration extends RecyclerView.ItemDecoration {
         outRect.right = spacing;
         outRect.bottom = spacing;
 
-        // Nếu là item đầu tiên, không cần khoảng cách trên
+
         if (parent.getChildAdapterPosition(view) == 0) {
             outRect.top = spacing;
         } else {

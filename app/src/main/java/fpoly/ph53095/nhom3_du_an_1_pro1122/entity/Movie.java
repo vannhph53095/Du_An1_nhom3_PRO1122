@@ -1,20 +1,20 @@
-package fpoly.ph53095.nhom3_du_an_1_pro1122;
+package fpoly.ph53095.nhom3_du_an_1_pro1122.entity;
 import com.google.firebase.firestore.PropertyName;
 
 public class Movie {
     private String title;
     private String genre;
     private float rating;
-    private int posterResId; // Hoặc String nếu bạn sử dụng URL
-    private String description; // Thêm mô tả
-    private String director; // Thêm đạo diễn
-    private int releaseYear; // Năm phát hành
+    private int posterResId;
+    private String description;
+    private String director;
+    private int releaseYear;
 
-    // Constructor không tham số
+
     public Movie() {
     }
 
-    // Constructor với tất cả các tham số
+
     public Movie(String title, String genre, float rating, int posterResId, String description, String director, int releaseYear) {
         this.title = title;
         this.genre = genre;
@@ -60,7 +60,7 @@ public class Movie {
         return releaseYear;
     }
 
-    // Các phương thức setter (nếu cần)
+
     public void setTitle(String title) {
         this.title = title;
     }

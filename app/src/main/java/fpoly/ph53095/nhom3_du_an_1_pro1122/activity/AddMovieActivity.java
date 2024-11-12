@@ -6,12 +6,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import fpoly.ph53095.nhom3_du_an_1_pro1122.Movie;
+import fpoly.ph53095.nhom3_du_an_1_pro1122.entity.Movie;
 import fpoly.ph53095.nhom3_du_an_1_pro1122.R;
 
 public class AddMovieActivity extends AppCompatActivity {

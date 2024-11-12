@@ -19,7 +19,7 @@
             android:name=".HomeFragment"
             android:exported="false" />
         <activity
-            android:name=".Manhinnhyeuthich"
+            android:name=".activity.Manhinnhyeuthich"
             android:exported="false" />
         <activity
             android:name=".activity.KeoMatKhau"

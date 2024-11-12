@@ -17,7 +17,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-import fpoly.ph53095.nhom3_du_an_1_pro1122.Movie;
+import fpoly.ph53095.nhom3_du_an_1_pro1122.entity.Movie;
 import fpoly.ph53095.nhom3_du_an_1_pro1122.R;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {

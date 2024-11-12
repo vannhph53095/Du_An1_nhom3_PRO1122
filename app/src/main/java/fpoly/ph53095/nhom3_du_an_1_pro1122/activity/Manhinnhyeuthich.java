@@ -1,4 +1,4 @@
-package fpoly.ph53095.nhom3_du_an_1_pro1122;
+package fpoly.ph53095.nhom3_du_an_1_pro1122.activity;
 
 import android.os.Bundle;
 
@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import fpoly.ph53095.nhom3_du_an_1_pro1122.R;
 
 public class Manhinnhyeuthich extends AppCompatActivity {
 

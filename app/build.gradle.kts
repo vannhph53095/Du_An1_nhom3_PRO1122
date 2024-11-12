@@ -38,19 +38,21 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.constraintlayout)
 
-    // Sử dụng BOM cho Firebase
-    implementation(platform("com.google.firebase:firebase-bom:31.0.0")) // Sử dụng BOM cho Firebase
-    implementation("com.google.firebase:firebase-auth-ktx") // Firebase Auth
-    implementation("com.google.firebase:firebase-firestore-ktx") // Firestore
+    // Firebase với BOM
+    implementation(platform("com.google.firebase:firebase-bom:32.1.1"))
+    implementation("com.google.firebase:firebase-auth-ktx")
+    implementation("com.google.firebase:firebase-firestore-ktx")
+
+    // Glide để tải hình ảnh
     implementation("com.github.bumptech.glide:glide:4.16.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
+
+    // Thành phần UI
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.cardview:cardview:1.0.0")
-    implementation("androidx.recyclerview:recyclerview:1.2.1") // Kiểm tra phiên bản mới nhất
 
+    // Thư viện kiểm thử
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-
-    // Cập nhật annotationProcessor cho Glide
-    annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
 }

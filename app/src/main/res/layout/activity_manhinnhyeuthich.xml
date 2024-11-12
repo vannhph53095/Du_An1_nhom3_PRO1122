@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
 
-    tools:context=".Manhinnhyeuthich">
+    tools:context=".activity.Manhinnhyeuthich">
     <ImageView
         android:id="@+id/btnbackinmanhinhyeuthich"
         android:layout_marginTop="20dp"
