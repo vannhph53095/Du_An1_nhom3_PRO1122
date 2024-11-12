@@ -43,12 +43,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         holder.txtMovieGenre.setText(movie.getGenre());
         holder.ratingBarMovie.setRating(movie.getRating());
 
-        // Sử dụng Glide để tải hình ảnh
+
         Glide.with(context)
                 .load(movie.getPosterResId()) // Nếu bạn có URL, hãy thay thế bằng URL
                 .into(holder.imageView);
 
-        // Thiết lập sự kiện click cho hình ảnh
         holder.imageView.setOnClickListener(v -> showMovieOptions(movie));
     }
 
@@ -58,17 +57,17 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     }
 
     private void showMovieOptions(Movie movie) {
-        // Tạo dialog để hiển thị các tùy chọn
+
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(movie.getTitle())
                 .setItems(new CharSequence[]{"Xem Phim", "Thông Tin Phim"}, (dialog, which) -> {
                     switch (which) {
                         case 0:
-                            // Xử lý xem phim
+
                             Toast.makeText(context, "Chức năng 'Xem Phim' chưa được triển khai.", Toast.LENGTH_SHORT).show();
                             break;
                         case 1:
-                            // Hiển thị thông tin phim
+
                             showMovieInfo(movie);
                             break;
                     }

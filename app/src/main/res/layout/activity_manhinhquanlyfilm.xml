@@ -41,5 +41,8 @@
             android:layout_height="45dp"
             android:text="Thêm phim"/>
     </LinearLayout>
-
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/listquanly"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
 </LinearLayout>
