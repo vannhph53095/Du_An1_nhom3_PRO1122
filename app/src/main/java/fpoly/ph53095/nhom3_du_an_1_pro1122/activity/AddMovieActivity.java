@@ -37,12 +37,7 @@ public class AddMovieActivity extends AppCompatActivity {
         buttonAddMovie = findViewById(R.id.buttonAddMovie);
 
         // Thiết lập sự kiện nhấn nút
-        buttonAddMovie.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addMovie();
-            }
-        });
+        buttonAddMovie.setOnClickListener(v -> addMovie());
     }
 
     private void addMovie() {
@@ -59,15 +54,21 @@ public class AddMovieActivity extends AppCompatActivity {
             return;
         }
 
-        // Chuyển đổi giá trị rating và releaseYear
-        float ratingValue = Float.parseFloat(rating);
-        int releaseYearValue = Integer.parseInt(releaseYear);
+        // Kiểm tra và chuyển đổi giá trị rating và releaseYear
+        float ratingValue;
+        int releaseYearValue;
+        try {
+            ratingValue = Float.parseFloat(rating);
+            releaseYearValue = Integer.parseInt(releaseYear);
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, "Vui lòng nhập giá trị hợp lệ cho rating và năm phát hành!", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        // Giả sử bạn có một ID tài nguyên cho poster (hoặc URL)
-        int posterResId = R.drawable.iteam4; // Thay đổi thành ID tài nguyên thực tế hoặc URL
 
-        // Tạo một đối tượng phim
-        Movie movie = new Movie(title, genre, ratingValue, posterResId, description, director, releaseYearValue);
+        String posterUri = "https://example.com/poster.jpg";
+
+        Movie movie = new Movie(title, genre, ratingValue, description, director, releaseYearValue, posterUri);
 
         // Thêm phim vào Firestore
         db.collection("movies")
@@ -80,6 +81,7 @@ public class AddMovieActivity extends AppCompatActivity {
                     Toast.makeText(AddMovieActivity.this, "Lỗi khi thêm phim: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
     }
+
 
     private void clearFields() {
         editTextTitle.setText("");

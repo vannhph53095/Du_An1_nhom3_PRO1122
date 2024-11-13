@@ -3,6 +3,7 @@ package fpoly.ph53095.nhom3_du_an_1_pro1122.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,30 +21,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fpoly.ph53095.nhom3_du_an_1_pro1122.Adapter.MovieAdapter;
-import fpoly.ph53095.nhom3_du_an_1_pro1122.Database.DatabaseHelper;
-import fpoly.ph53095.nhom3_du_an_1_pro1122.Adapter.List_phimmoi_Adapter;
-import fpoly.ph53095.nhom3_du_an_1_pro1122.entity.Movie;
-import fpoly.ph53095.nhom3_du_an_1_pro1122.R;
 import fpoly.ph53095.nhom3_du_an_1_pro1122.Adapter.viewPagerAdapter;
+import fpoly.ph53095.nhom3_du_an_1_pro1122.R;
 import fpoly.ph53095.nhom3_du_an_1_pro1122.SpacingItemDecoration;
+import fpoly.ph53095.nhom3_du_an_1_pro1122.entity.Movie;
 
 public class TrangChu extends AppCompatActivity {
-    private ViewPager mViewPager;
-    private ImageView accout_ic;
     private RecyclerView recyclerView;
     private MovieAdapter movieAdapter;
     private List<Movie> movieList;
     private FirebaseFirestore db;
+    private String email;  // Email từ màn hình đăng nhập
+    private ImageView accout_ic;
+    private ViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trang_chu);
 
+        // Lấy email đã chuyền từ màn hình đăng nhập
+        email = getIntent().getStringExtra("email");
+
+        // Khởi tạo các thành phần UI
         recyclerView = findViewById(R.id.recyclerView);
         db = FirebaseFirestore.getInstance();
         movieList = new ArrayList<>();
-
 
         movieAdapter = new MovieAdapter(this, movieList);
         recyclerView.setAdapter(movieAdapter);
@@ -58,23 +61,30 @@ public class TrangChu extends AppCompatActivity {
             return insets;
         });
 
-
+        // Cài đặt ViewPager cho các hình ảnh
         int[] images = {R.drawable.iteam1, R.drawable.iteam2, R.drawable.iteam3, R.drawable.iteam4, R.drawable.iteam5};
         mViewPager = findViewById(R.id.viewPagerMain);
         viewPagerAdapter mViewPagerAdapter = new viewPagerAdapter(this, images);
         mViewPager.setAdapter(mViewPagerAdapter);
 
-
+        // Sự kiện khi nhấn vào biểu tượng tài khoản
         accout_ic = findViewById(R.id.accout_ic);
         accout_ic.setOnClickListener(v -> {
-            Intent intent = new Intent(TrangChu.this, Manhinhadmin.class);
-            startActivity(intent);
+            // Kiểm tra xem email có phải là email admin không
+            if ("vannhph53095@gmail.com".equals(email)) {
+                Intent intent = new Intent(TrangChu.this, Manhinhadmin.class);
+                startActivity(intent);
+            } else {
+                Intent intent = new Intent(TrangChu.this, Manhinhclient.class);
+                startActivity(intent);
+            }
         });
 
+        // Load dữ liệu phim từ Firestore
         loadMoviesFromFirestore();
     }
 
-
+    // Hàm load phim từ Firestore
     private void loadMoviesFromFirestore() {
         db.collection("movies").get()
                 .addOnCompleteListener(task -> {

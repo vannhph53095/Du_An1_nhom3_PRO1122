@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">Nhom3_Du_An_1_PRO1122</string>
+    <string name="app_name">MyApp</string>
+
+
+    <string-array name="genre_array">
+        <item>Sci-fi</item>
+        <item>Romance</item>
+        <item>Action</item>
+        <item>Horror</item>
+    </string-array>
 </resources>
