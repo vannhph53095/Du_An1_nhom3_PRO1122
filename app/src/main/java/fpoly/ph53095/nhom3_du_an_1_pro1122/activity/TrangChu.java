@@ -78,15 +78,11 @@ public class TrangChu extends AppCompatActivity implements MovieAdapter.OnMovieC
     public void onMovieClick(Movie movie) {
         // Khi click vào item, mở màn hình chi tiết phim
         Intent intent = new Intent(TrangChu.this, manhinhxemphim.class);
-        intent.putExtra("movieId", movie.getId());
-        intent.putExtra("movieTitle", movie.getTitle());
-        intent.putExtra("movieGenre", movie.getGenre());
-        intent.putExtra("movieRating", movie.getRating());
-        intent.putExtra("movieDescription", movie.getDescription());
-        intent.putExtra("movieDirector", movie.getDirector());
-        intent.putExtra("movieReleaseYear", movie.getReleaseYear());
-        intent.putExtra("moviePosterUri", movie.getPosterUri());
+        intent.putExtra("filmSource", movie.getFilmSource()); // Truyền tên video
         startActivity(intent);
+
+
+
     }
 
     @Override

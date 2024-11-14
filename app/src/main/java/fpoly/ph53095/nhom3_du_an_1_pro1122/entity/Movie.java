@@ -11,12 +11,13 @@ public class Movie implements Serializable {
     private String director;
     private int releaseYear;
     private String posterUri;
+    private String filmSource;
 
     // Constructor không đối số
     public Movie() { }
 
     // Constructor có đối số
-    public Movie(String title, String genre, float rating, String description, String director, int releaseYear, String posterUri) {
+    public Movie(String title, String genre, float rating, String description, String director, int releaseYear, String posterUri, String filmSource) {
         this.title = title;
         this.genre = genre;
         this.rating = rating;
@@ -24,8 +25,15 @@ public class Movie implements Serializable {
         this.director = director;
         this.releaseYear = releaseYear;
         this.posterUri = posterUri;
+        this.filmSource = filmSource;
+    }
+    public String getFilmSource() {
+        return filmSource;
     }
 
+    public void setFilmSource(String filmSource) {
+        this.filmSource = filmSource;
+    }
     public String getDescription() {
         return description;
     }

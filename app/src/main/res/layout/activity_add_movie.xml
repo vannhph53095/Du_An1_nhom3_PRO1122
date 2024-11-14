@@ -10,6 +10,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Source ảnh" />
+    <EditText
+        android:id="@+id/editTextFilmSource"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Source film" />
 
     <EditText
         android:id="@+id/editTextTitle"

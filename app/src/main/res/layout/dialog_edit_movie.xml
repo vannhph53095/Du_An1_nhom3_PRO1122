@@ -12,6 +12,12 @@
         android:layout_height="200dp"
         android:scaleType="centerCrop"
         android:contentDescription="Poster phim" />
+    <EditText
+        android:id="@+id/editTextFilmSource"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nguồn phim"
+        android:inputType="text" />
 
     <EditText
         android:id="@+id/editTitle"

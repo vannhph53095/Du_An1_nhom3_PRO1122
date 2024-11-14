@@ -89,7 +89,7 @@ public class Manhinhquanlyfilm extends AppCompatActivity implements MovieAdapter
         View dialogView = getLayoutInflater().inflate(R.layout.dialog_edit_movie, null);
         builder.setView(dialogView);
 
-
+        EditText editFilmSource = dialogView.findViewById(R.id.editTextFilmSource);  // Thêm trường filmSource vào dialog
         EditText editTitle = dialogView.findViewById(R.id.editTitle);
         EditText editGenre = dialogView.findViewById(R.id.editGenre);
         EditText editDescription = dialogView.findViewById(R.id.editDescription);
@@ -97,7 +97,7 @@ public class Manhinhquanlyfilm extends AppCompatActivity implements MovieAdapter
         RatingBar ratingBar = dialogView.findViewById(R.id.ratingBar);
         ImageView imagePoster = dialogView.findViewById(R.id.imagePoster);
 
-
+        editFilmSource.setText(movie.getFilmSource());
         editTitle.setText(movie.getTitle());
         editGenre.setText(movie.getGenre());
         editDescription.setText(movie.getDescription());
@@ -113,7 +113,7 @@ public class Manhinhquanlyfilm extends AppCompatActivity implements MovieAdapter
 
 
         builder.setPositiveButton("Lưu", (dialog, which) -> {
-
+            movie.setFilmSource(editFilmSource.getText().toString());
             movie.setTitle(editTitle.getText().toString());
             movie.setGenre(editGenre.getText().toString());
             movie.setDescription(editDescription.getText().toString());

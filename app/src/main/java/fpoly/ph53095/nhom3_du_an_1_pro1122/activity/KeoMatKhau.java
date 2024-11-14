@@ -29,13 +29,13 @@ public class KeoMatKhau extends AppCompatActivity {
         setContentView(R.layout.activity_keo_mat_khau);
         mAuth = FirebaseAuth.getInstance();
 
-        // Tham chiếu đến các view
+
         edtEmail = findViewById(R.id.edtEmail);
         errorMessage = findViewById(R.id.errorMessage);
         Button submitButton = findViewById(R.id.submitButton);
         TextView backToLogin = findViewById(R.id.backToLogin);
 
-        // Xử lý sự kiện khi nhấn vào nút "Gửi yêu cầu"
+
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

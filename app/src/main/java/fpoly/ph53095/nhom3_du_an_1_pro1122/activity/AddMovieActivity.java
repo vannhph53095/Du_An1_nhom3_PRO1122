@@ -18,16 +18,17 @@ public class AddMovieActivity extends AppCompatActivity {
     private EditText editTextTitle, editTextGenre, editTextRating, editTextDescription, editTextDirector, editTextReleaseYear;
     private Button buttonAddMovie;
     private FirebaseFirestore db;
+    private EditText editTextFilmSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_movie);
 
-        // Khởi tạo Firestore
+
         db = FirebaseFirestore.getInstance();
 
-        // Ánh xạ các view
+        editTextFilmSource = findViewById(R.id.editTextFilmSource);
         editTextTitle = findViewById(R.id.editTextTitle);
         editTextGenre = findViewById(R.id.editTextGenre);
         editTextRating = findViewById(R.id.editTextRating);
@@ -48,7 +49,7 @@ public class AddMovieActivity extends AppCompatActivity {
         String director = editTextDirector.getText().toString().trim();
         String releaseYear = editTextReleaseYear.getText().toString().trim();
 
-        // Kiểm tra xem các trường có rỗng không
+        String filmSource = editTextFilmSource.getText().toString().trim();
         if (title.isEmpty() || genre.isEmpty() || rating.isEmpty() || description.isEmpty() || director.isEmpty() || releaseYear.isEmpty()) {
             Toast.makeText(this, "Vui lòng điền đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
             return;
@@ -68,7 +69,7 @@ public class AddMovieActivity extends AppCompatActivity {
 
         String posterUri = "https://example.com/poster.jpg";
 
-        Movie movie = new Movie(title, genre, ratingValue, description, director, releaseYearValue, posterUri);
+        Movie movie = new Movie(title, genre, ratingValue, description, director, releaseYearValue, posterUri, filmSource);
 
         // Thêm phim vào Firestore
         db.collection("movies")
