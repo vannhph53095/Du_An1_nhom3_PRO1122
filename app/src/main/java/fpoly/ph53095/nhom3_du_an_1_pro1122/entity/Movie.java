@@ -90,6 +90,5 @@ public class Movie implements Serializable {
         this.title = title;
     }
 
-    // Getters và Setters
-    //...
+
 }
