@@ -1,6 +1,5 @@
-package fpoly.ph53095.nhom3_du_an_1_pro1122;
+package fpoly.ph53095.nhom3_du_an_1_pro1122.activity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -9,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import fpoly.ph53095.nhom3_du_an_1_pro1122.R;
 import fpoly.ph53095.nhom3_du_an_1_pro1122.entity.Movie;
 
 public class EditMovieActivity extends AppCompatActivity {

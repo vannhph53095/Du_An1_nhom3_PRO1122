@@ -16,7 +16,7 @@
             android:name=".activity.manhinhxemphim"
             android:exported="false" />
         <activity
-            android:name=".EditMovieActivity"
+            android:name=".activity.EditMovieActivity"
             android:exported="false" />
         <activity
             android:name=".activity.AddMovieActivity"
