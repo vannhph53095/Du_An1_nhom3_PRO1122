@@ -18,12 +18,12 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp">
+            android:layout_height="250dp">
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="373dp"
-                android:layout_height="146dp"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop" />
 
@@ -45,6 +45,7 @@
         </FrameLayout>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/txtMovieTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -54,22 +55,6 @@
             android:ellipsize="end"
             android:maxLines="1" />
 
-        <TextView
-            android:id="@+id/txtMovieGenre"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:textSize="14sp"
-            android:ellipsize="end"
-            android:maxLines="1" />
 
-        <RatingBar
-            android:id="@+id/ratingBarMovie"
-            style="?android:attr/ratingBarStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:numStars="5"
-            android:rating="0"
-            android:stepSize="0.5" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

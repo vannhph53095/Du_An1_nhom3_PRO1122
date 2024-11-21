@@ -2,52 +2,62 @@ package fpoly.ph53095.nhom3_du_an_1_pro1122.activity;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.widget.MediaController;
-import android.widget.Toast;
+import android.widget.ImageView;
+import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.VideoView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
+import com.bumptech.glide.Glide;
 
 import fpoly.ph53095.nhom3_du_an_1_pro1122.R;
 
 public class manhinhxemphim extends AppCompatActivity {
-    private VideoView filmscreen;
+
+    private TextView tvTitle, tvGenre, tvDescription, tvDirector, tvYear;
+    private RatingBar ratingBarMoviexp;
+    private VideoView filmScreen;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manhinhxemphim);
 
-        filmscreen = findViewById(R.id.filmscreen);
+        // Ánh xạ view
+        tvTitle = findViewById(R.id.tvTitle);
+        tvGenre = findViewById(R.id.tvGenre);
+        tvDescription = findViewById(R.id.tvDescription);
+        tvDirector = findViewById(R.id.tvDirector);
+        tvYear = findViewById(R.id.tvYear);
+        ratingBarMoviexp = findViewById(R.id.ratingBarMoviexp);
+        filmScreen = findViewById(R.id.filmscreen);
 
+
+        // Nhận dữ liệu từ Intent
+        String title = getIntent().getStringExtra("title");
+        String genre = getIntent().getStringExtra("genre");
+        float rating = getIntent().getFloatExtra("rating", 0);
+        String description = getIntent().getStringExtra("description");
+        String director = getIntent().getStringExtra("director");
+        int releaseYear = getIntent().getIntExtra("releaseYear", 0);
         String filmSource = getIntent().getStringExtra("filmSource");
+        String posterUri = getIntent().getStringExtra("posterUri");
 
-        if (filmSource != null && !filmSource.isEmpty()) {
-            int videoResId = getResources().getIdentifier(filmSource, "raw", getPackageName());
+        // Gán dữ liệu vào view
+        tvTitle.setText(title);
+        tvGenre.setText(genre);
+        tvDescription.setText(description);
+        tvDirector.setText("Director: " + director);
+        tvYear.setText("Year: " + releaseYear);
+        ratingBarMoviexp.setRating(rating);
 
-            if (videoResId != 0) {
-
-                Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + videoResId);
-                filmscreen.setVideoURI(uri);
-
-
-                MediaController mediaController = new MediaController(this);
-                mediaController.setAnchorView(filmscreen);
-                filmscreen.setMediaController(mediaController);
+        // Hiển thị video
+        Uri videoUri = Uri.parse("android.resource://" + getPackageName() + "/raw/" + filmSource);
+        filmScreen.setVideoURI(videoUri);
+        filmScreen.start();
 
 
-                filmscreen.start();
-            } else {
-                Toast.makeText(this, "Không tìm thấy video trong tài nguyên.", Toast.LENGTH_SHORT).show();
-            }
-        } else {
-            Toast.makeText(this, "Tên video không hợp lệ.", Toast.LENGTH_SHORT).show();
-        }
     }
-
-
 }
