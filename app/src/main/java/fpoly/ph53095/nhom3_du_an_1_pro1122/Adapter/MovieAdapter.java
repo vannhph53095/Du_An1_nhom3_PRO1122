@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import fpoly.ph53095.nhom3_du_an_1_pro1122.R;
+import fpoly.ph53095.nhom3_du_an_1_pro1122.activity.manhinhxemphim;
 import fpoly.ph53095.nhom3_du_an_1_pro1122.entity.Movie;
 
 import fpoly.ph53095.nhom3_du_an_1_pro1122.activity.AddMovieActivity;
@@ -52,16 +53,23 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         Movie movie = movieList.get(position);
 
         holder.txtMovieTitle.setText(movie.getTitle());
-        holder.txtMovieGenre.setText(movie.getGenre());
-        holder.ratingBarMovie.setRating(movie.getRating());
+
         Glide.with(context)
                 .load(movie.getPosterUri()) // Giả sử bạn có một URI hình ảnh
                 .into(holder.imageView);
         // Khi click vào item
         holder.itemView.setOnClickListener(v -> {
-            if (movieClickListener != null) {
-                movieClickListener.onMovieClick(movie);
-            }
+            Intent intent = new Intent(context, manhinhxemphim.class);
+            intent.putExtra("title", movie.getTitle());
+            intent.putExtra("genre", movie.getGenre());
+            intent.putExtra("rating", movie.getRating());
+            intent.putExtra("description", movie.getDescription());
+            intent.putExtra("director", movie.getDirector());
+            intent.putExtra("releaseYear", movie.getReleaseYear());
+            intent.putExtra("filmSource", movie.getFilmSource());
+            intent.putExtra("posterUri", movie.getPosterUri());
+            context.startActivity(intent);
+
         });
 
         // Khi long-click vào item (giống như xóa hoặc sửa)
@@ -86,8 +94,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         public MovieViewHolder(View itemView) {
             super(itemView);
             txtMovieTitle = itemView.findViewById(R.id.txtMovieTitle);
-            txtMovieGenre = itemView.findViewById(R.id.txtMovieGenre);
-            ratingBarMovie = itemView.findViewById(R.id.ratingBarMovie);
+
             imageView = itemView.findViewById(R.id.imageView);
         }
     }

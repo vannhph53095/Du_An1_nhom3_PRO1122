@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -47,10 +48,9 @@ public class Manhinhquanlyfilm extends AppCompatActivity implements MovieAdapter
         movieList = new ArrayList<>();
 
 
-        movieAdapter = new MovieAdapter(this, movieList, this);
+        movieAdapter = new MovieAdapter(this, movieList, this); // Truyền `this` cho callback
         listquanly.setAdapter(movieAdapter);
-        listquanly.setLayoutManager(new LinearLayoutManager(this));
-
+        listquanly.setLayoutManager(new GridLayoutManager(this, 2));
 
         loadMoviesFromFirestore();
 
