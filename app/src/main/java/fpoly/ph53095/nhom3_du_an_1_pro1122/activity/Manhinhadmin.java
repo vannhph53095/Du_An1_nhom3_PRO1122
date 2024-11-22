@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 import fpoly.ph53095.nhom3_du_an_1_pro1122.R;
 
 public class Manhinhadmin extends AppCompatActivity {
-
+private LinearLayout btnlogout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +29,12 @@ public class Manhinhadmin extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        btnlogout=findViewById(R.id.btnlogout);
+        btnlogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(Manhinhadmin.this, ManHinhDangNhap.class);
+            }
+        });
     }
 }

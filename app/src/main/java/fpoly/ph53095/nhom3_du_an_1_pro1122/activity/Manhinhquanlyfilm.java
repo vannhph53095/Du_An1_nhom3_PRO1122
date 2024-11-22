@@ -38,7 +38,7 @@ public class Manhinhquanlyfilm extends AppCompatActivity implements MovieAdapter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manhinhquanlyfilm);
 
-        // Ánh xạ view
+
         addMovieLayout = findViewById(R.id.add_movie);
         listquanly = findViewById(R.id.listquanly);
 
@@ -89,7 +89,7 @@ public class Manhinhquanlyfilm extends AppCompatActivity implements MovieAdapter
         View dialogView = getLayoutInflater().inflate(R.layout.dialog_edit_movie, null);
         builder.setView(dialogView);
 
-        EditText editFilmSource = dialogView.findViewById(R.id.editTextFilmSource);  // Thêm trường filmSource vào dialog
+        EditText editFilmSource = dialogView.findViewById(R.id.editTextFilmSource);
         EditText editTitle = dialogView.findViewById(R.id.editTitle);
         EditText editGenre = dialogView.findViewById(R.id.editGenre);
         EditText editDescription = dialogView.findViewById(R.id.editDescription);
@@ -109,6 +109,7 @@ public class Manhinhquanlyfilm extends AppCompatActivity implements MovieAdapter
             Glide.with(this)
                     .load(movie.getPosterUri())
                     .into(imagePoster);
+
         }
 
 

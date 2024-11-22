@@ -2,6 +2,7 @@ package fpoly.ph53095.nhom3_du_an_1_pro1122.activity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -10,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import fpoly.ph53095.nhom3_du_an_1_pro1122.Adapter.MovieAdapter;
 import fpoly.ph53095.nhom3_du_an_1_pro1122.entity.Movie;
 import fpoly.ph53095.nhom3_du_an_1_pro1122.R;
 
@@ -19,7 +21,7 @@ public class AddMovieActivity extends AppCompatActivity {
     private Button buttonAddMovie;
     private FirebaseFirestore db;
     private EditText editTextFilmSource;
-
+private fpoly.ph53095.nhom3_du_an_1_pro1122.Adapter.MovieAdapter MovieAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +39,7 @@ public class AddMovieActivity extends AppCompatActivity {
         editTextReleaseYear = findViewById(R.id.editTextReleaseYear);
         buttonAddMovie = findViewById(R.id.buttonAddMovie);
 
-        // Thiết lập sự kiện nhấn nút
+
         buttonAddMovie.setOnClickListener(v -> addMovie());
     }
 
@@ -55,7 +57,7 @@ public class AddMovieActivity extends AppCompatActivity {
             return;
         }
 
-        // Kiểm tra và chuyển đổi giá trị rating và releaseYear
+
         float ratingValue;
         int releaseYearValue;
         try {
@@ -71,11 +73,12 @@ public class AddMovieActivity extends AppCompatActivity {
 
         Movie movie = new Movie(title, genre, ratingValue, description, director, releaseYearValue, posterUri, filmSource);
 
-        // Thêm phim vào Firestore
+
         db.collection("movies")
                 .add(movie)
                 .addOnSuccessListener(documentReference -> {
                     Toast.makeText(AddMovieActivity.this, "Phim đã được thêm thành công!", Toast.LENGTH_SHORT).show();
+                    MovieAdapter.notifyDataSetChanged();
                     clearFields();
                 })
                 .addOnFailureListener(e -> {

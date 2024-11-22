@@ -8,6 +8,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -16,31 +17,46 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fpoly.ph53095.nhom3_du_an_1_pro1122.Adapter.MovieAdapter;
+import fpoly.ph53095.nhom3_du_an_1_pro1122.Adapter.viewPagerAdapter;
 import fpoly.ph53095.nhom3_du_an_1_pro1122.R;
 import fpoly.ph53095.nhom3_du_an_1_pro1122.entity.Movie;
 
 public class TrangChu extends AppCompatActivity implements MovieAdapter.OnMovieClickListener {
 
     private RecyclerView recyclerView;
+
     private MovieAdapter movieAdapter;
     private List<Movie> movieList;
     private FirebaseFirestore db;
     private String email;
     private ImageView accout_ic;
-
+    private ViewPager viewPagerMain;
+    private viewPagerAdapter pagerAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trang_chu);
+        viewPagerMain = findViewById(R.id.viewPagerMain);
 
-        // Lấy email từ intent
+
+        int[] images = {
+                R.drawable.iteam1,
+                R.drawable.iteam2,
+                R.drawable.iteam3
+        };
+
+
+        pagerAdapter = new viewPagerAdapter(this, images);
+        viewPagerMain.setAdapter(pagerAdapter);
+
+
         email = getIntent().getStringExtra("email");
 
         recyclerView = findViewById(R.id.recyclerView);
         db = FirebaseFirestore.getInstance();
         movieList = new ArrayList<>();
 
-        movieAdapter = new MovieAdapter(this, movieList, this); // Truyền `this` cho callback
+        movieAdapter = new MovieAdapter(this, movieList, this);
         recyclerView.setAdapter(movieAdapter);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
@@ -76,9 +92,9 @@ public class TrangChu extends AppCompatActivity implements MovieAdapter.OnMovieC
 
     @Override
     public void onMovieClick(Movie movie) {
-        // Khi click vào item, mở màn hình chi tiết phim
+
         Intent intent = new Intent(TrangChu.this, manhinhxemphim.class);
-        intent.putExtra("filmSource", movie.getFilmSource()); // Truyền tên video
+        intent.putExtra("filmSource", movie.getFilmSource());
         startActivity(intent);
 
 
@@ -87,6 +103,6 @@ public class TrangChu extends AppCompatActivity implements MovieAdapter.OnMovieC
 
     @Override
     public void onMovieLongClick(Movie movie) {
-        // Không xử lý gì ở Trang Chủ vì chỉ cần click vào item
+
     }
 }

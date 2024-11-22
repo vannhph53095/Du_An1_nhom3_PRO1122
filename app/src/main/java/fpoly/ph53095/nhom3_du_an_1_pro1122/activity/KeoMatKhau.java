@@ -49,7 +49,7 @@ public class KeoMatKhau extends AppCompatActivity {
             }
         });
 
-        // Xử lý sự kiện khi nhấn vào "Quay lại đăng nhập"
+
         backToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,7 +62,7 @@ public class KeoMatKhau extends AppCompatActivity {
     }
 
     private void resetPassword(String email) {
-        // Gửi email đặt lại mật khẩu qua Firebase
+
         mAuth.sendPasswordResetEmail(email)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
