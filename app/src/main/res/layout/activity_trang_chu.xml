@@ -19,7 +19,7 @@
             android:id="@+id/main"
             tools:context=".activity.TrangChu">
 
-            <!-- Bắt đầu nội dung chính -->
+
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -178,38 +178,7 @@
         </LinearLayout>
     </ScrollView>
 
-    <LinearLayout
-        android:id="@+id/bottomNavigation"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#333333"
-        android:gravity="center"
-        android:layout_alignParentBottom="true">
-
-        <ImageView
-            android:layout_weight="1"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:src="@drawable/home_icon"
-            android:padding="16dp"
-            app:tint="#FFFFFF" />
-
-        <ImageView
-            android:layout_weight="1"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:src="@drawable/heart_ic"
-            android:padding="16dp"
-            app:tint="#FFFFFF" />
-
-        <ImageView
-            android:id="@+id/accout_ic"
-            android:layout_weight="1"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:src="@drawable/accout_ic"
-            android:padding="16dp"
-            app:tint="#FFFFFF" />
-    </LinearLayout>
+    <include
+        layout="@layout/bottomnavigation_layout"
+        />
 </RelativeLayout>

@@ -33,7 +33,8 @@ public class Manhinhquanlyfilm extends AppCompatActivity implements MovieAdapter
     private MovieAdapter movieAdapter;
     private List<Movie> movieList;
     private FirebaseFirestore db;
-
+    private ImageView accout_ic, mhyeuthichbutton, home_icon;
+    private String email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +43,32 @@ public class Manhinhquanlyfilm extends AppCompatActivity implements MovieAdapter
 
         addMovieLayout = findViewById(R.id.add_movie);
         listquanly = findViewById(R.id.listquanly);
+        email = getIntent().getStringExtra("email");
+        home_icon=findViewById(R.id.home_icon);
+        home_icon.setOnClickListener(v -> {
+            Intent intent = new Intent(Manhinhquanlyfilm.this, TrangChu.class);
+            intent.putExtra("email", email);
+            startActivity(intent);
+            finish();
+        });
+        mhyeuthichbutton=findViewById(R.id.mhyeuthichbutton);
+        mhyeuthichbutton.setOnClickListener(v -> {
 
+            Intent intent = new Intent(Manhinhquanlyfilm.this, Manhinnhyeuthich.class);
+            intent.putExtra("email", email);
+            startActivity(intent);
+            finish();
+        });
+
+        accout_ic = findViewById(R.id.accout_ic);
+        accout_ic.setOnClickListener(v -> {
+            if ("vannhph53095@gmail.com".equals(email)) {
+                Intent intent = new Intent(Manhinhquanlyfilm.this, Manhinhadmin.class);
+                intent.putExtra("email", email);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         db = FirebaseFirestore.getInstance();
         movieList = new ArrayList<>();

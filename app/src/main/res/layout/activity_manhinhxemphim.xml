@@ -24,12 +24,13 @@ android:gravity="center"
         android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
+        android:textSize="35sp"
         android:textStyle="bold"
         android:text="Title" />
 
     <!-- Thể loại -->
     <TextView
+        android:textStyle="bold"
         android:id="@+id/tvGenre"
         android:textSize="22sp"
         android:layout_width="match_parent"
@@ -39,6 +40,7 @@ android:gravity="center"
     <!-- Đánh giá -->
 
     <RatingBar
+        android:layout_marginLeft="10dp"
         android:id="@+id/ratingBarMoviexp"
         style="?android:attr/ratingBarStyleSmall"
         android:layout_width="wrap_content"
@@ -51,6 +53,7 @@ android:gravity="center"
 
     <!-- Mô tả -->
     <TextView
+        android:textStyle="bold"
         android:textSize="22sp"
         android:id="@+id/tvDescription"
         android:layout_width="match_parent"
@@ -59,6 +62,7 @@ android:gravity="center"
 
     <!-- Đạo diễn -->
     <TextView
+        android:textStyle="bold"
         android:textSize="22sp"
         android:id="@+id/tvDirector"
         android:layout_width="match_parent"
@@ -67,12 +71,14 @@ android:gravity="center"
 
     <!-- Năm phát hành -->
     <TextView
+        android:textStyle="bold"
         android:textSize="22sp"
         android:id="@+id/tvYear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Year" />
     <TextView
+
         android:layout_marginVertical="20dp"
         android:textStyle="bold"
         android:textSize="25dp"

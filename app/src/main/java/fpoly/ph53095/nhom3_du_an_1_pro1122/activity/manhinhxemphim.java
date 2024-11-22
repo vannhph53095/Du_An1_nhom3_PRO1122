@@ -45,12 +45,11 @@ public class manhinhxemphim extends AppCompatActivity {
         String filmSource = getIntent().getStringExtra("filmSource");
         String posterUri = getIntent().getStringExtra("posterUri");
 
-        // Gán dữ liệu vào view
         tvTitle.setText(title);
-        tvGenre.setText(genre);
-        tvDescription.setText(description);
-        tvDirector.setText("Director: " + director);
-        tvYear.setText("Year: " + releaseYear);
+        tvGenre.setText("  Thể loại:"+genre);
+        tvDescription.setText("  Nội dung phim: "+description);
+        tvDirector.setText("  Director: " + director);
+        tvYear.setText("  Năm phát hành : " + releaseYear);
         ratingBarMoviexp.setRating(rating);
 
         // Hiển thị video

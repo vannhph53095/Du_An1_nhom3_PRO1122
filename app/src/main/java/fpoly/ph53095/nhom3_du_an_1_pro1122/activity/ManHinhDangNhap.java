@@ -84,6 +84,6 @@ btndenmanhinhdangky=findViewById(R.id.btndenmanhinhdangky);
             intent.putExtra("email", emailInput);
             startActivity(intent);
         }
-        finish();
+
     }
 }

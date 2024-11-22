@@ -2,8 +2,10 @@ package fpoly.ph53095.nhom3_du_an_1_pro1122.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.activity.EdgeToEdge;
@@ -15,6 +17,8 @@ import androidx.core.view.WindowInsetsCompat;
 import fpoly.ph53095.nhom3_du_an_1_pro1122.R;
 
 public class Manhinhadmin extends AppCompatActivity {
+    private ImageView accout_ic, mhyeuthichbutton, home_icon;
+    private String email;
 private LinearLayout btnlogout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +30,40 @@ private LinearLayout btnlogout;
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Manhinhadmin.this, Manhinhquanlyfilm.class);
+                intent.putExtra("email", email);
                 startActivity(intent);
+
+
+                finish();
             }
         });
+        email = getIntent().getStringExtra("email");
+        home_icon=findViewById(R.id.home_icon);
+        home_icon.setOnClickListener(v -> {
+            Intent intent = new Intent(Manhinhadmin.this, TrangChu.class);
+            intent.putExtra("email", email);
+            startActivity(intent);
+            finish();
+        });
+        mhyeuthichbutton=findViewById(R.id.mhyeuthichbutton);
+        mhyeuthichbutton.setOnClickListener(v -> {
+
+            Intent intent = new Intent(Manhinhadmin.this, Manhinnhyeuthich.class);
+            intent.putExtra("email", email);
+            startActivity(intent);
+            finish();
+        });
+
+        accout_ic = findViewById(R.id.accout_ic);
+        accout_ic.setOnClickListener(v -> {
+            if ("vannhph53095@gmail.com".equals(email)) {
+                Intent intent = new Intent(Manhinhadmin.this, Manhinhadmin.class);
+                intent.putExtra("email", email);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         btnlogout=findViewById(R.id.btnlogout);
         btnlogout.setOnClickListener(new View.OnClickListener() {
             @Override

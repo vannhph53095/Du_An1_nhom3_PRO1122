@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".activity.Manhinhadmin"
     android:background="#ffff"
+    android:fitsSystemWindows="true"
     android:orientation="vertical">
     <ImageView
         android:id="@+id/btnbackinmanhinhyeuthich"
@@ -101,7 +102,8 @@ android:id="@+id/btnlogout"
 
 
 
-
+        <include
+            layout="@layout/bottomnavigation_layout" />
     </RelativeLayout>
 
 </LinearLayout>
