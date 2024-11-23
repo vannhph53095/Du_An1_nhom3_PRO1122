@@ -9,27 +9,32 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import fpoly.ph53095.nhom3_du_an_1_pro1122.Adapter.MovieAdapter;
+import fpoly.ph53095.nhom3_du_an_1_pro1122.Adapter.MovieAdaptertop10;
 import fpoly.ph53095.nhom3_du_an_1_pro1122.Adapter.viewPagerAdapter;
 import fpoly.ph53095.nhom3_du_an_1_pro1122.Manhinhlichsu;
 import fpoly.ph53095.nhom3_du_an_1_pro1122.Manhinhtheloai;
 import fpoly.ph53095.nhom3_du_an_1_pro1122.R;
 import fpoly.ph53095.nhom3_du_an_1_pro1122.entity.Movie;
 
-public class TrangChu extends AppCompatActivity implements MovieAdapter.OnMovieClickListener {
+public class TrangChu extends AppCompatActivity implements MovieAdapter.OnMovieClickListener,MovieAdaptertop10.OnMovieClickListener {
 
-    private RecyclerView recyclerView;
+    private RecyclerView recyclerView,recyclerViewtop10;
     private MovieAdapter movieAdapter;
-    private List<Movie> movieList;
+    private  MovieAdaptertop10 movieAdaptertop10;
+    private List<Movie> movieList,movieListTop10;
     private FirebaseFirestore db;
 
     private String email;
@@ -75,14 +80,19 @@ public class TrangChu extends AppCompatActivity implements MovieAdapter.OnMovieC
         recyclerView = findViewById(R.id.recyclerView);
         db = FirebaseFirestore.getInstance();
         movieList = new ArrayList<>();
-
+        movieListTop10=new ArrayList<>();
         // Cài đặt adapter cho RecyclerView
         movieAdapter = new MovieAdapter(this, movieList, this);
         recyclerView.setAdapter(movieAdapter);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-
-        // Tải danh sách phim từ Firestore
         loadMoviesFromFirestore();
+        recyclerViewtop10 = findViewById(R.id.recyclerViewtop10);
+        movieAdaptertop10 = new MovieAdaptertop10(this, movieListTop10, this);
+        recyclerViewtop10.setAdapter(movieAdaptertop10);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerViewtop10.setLayoutManager(layoutManager);
+        loadtop10MoviesFromFirestore();
 
         // Sự kiện click icon tài khoản
         email = getIntent().getStringExtra("email");
@@ -170,16 +180,33 @@ home_icon=findViewById(R.id.home_icon);
                         Toast.makeText(this, "Lỗi khi tải phim: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
+    }private void loadtop10MoviesFromFirestore() {
+        db.collection("movies")
+                .orderBy("watched", Query.Direction.DESCENDING) // Sắp xếp theo số lượt xem giảm dần
+                .limit(10) // Lấy top 10
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        movieListTop10.clear();
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            Movie movie = document.toObject(Movie.class);
+                            movieListTop10.add(movie);
+                        }
+                        movieAdaptertop10.notifyDataSetChanged();
+                    } else {
+                        Toast.makeText(this, "Lỗi khi tải phim: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
+
 
     @Override
     public void onMovieClick(Movie movie) {
-        movie.setWatched(true);
+
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("movies").document(movie.getId())
-                .update("isWatched", true)  // Cập nhật trạng thái watched
+                .update("watched", FieldValue.increment(1))
                 .addOnSuccessListener(aVoid -> {
-                    // Mở màn hình lịch sử và truyền thông tin phim
                     Intent intent = new Intent(TrangChu.this, Manhinhlichsu.class);
                     intent.putExtra("movie", movie);  // Chuyển đối tượng phim
 
@@ -196,7 +223,9 @@ home_icon=findViewById(R.id.home_icon);
         startActivity(intent);
 
     }
-
+    public interface OnMovieClickListener {
+        void onMovieClick(Movie movie);
+    }
     @Override
     public void onMovieLongClick(Movie movie) {
 

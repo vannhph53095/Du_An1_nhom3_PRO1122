@@ -7,47 +7,59 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activity.Manhinhquanlyfilm">
-
-<TextView
+<androidx.core.widget.NestedScrollView
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Quan Ly Film"
-    android:layout_margin="30dp"
-    android:gravity="center"
-    android:textStyle="bold"
-   android:textSize="30dp" />
+    android:layout_height="wrap_content">
     <LinearLayout
-        android:id="@+id/add_movie"
-        android:layout_marginHorizontal="30dp"
-        android:background="@drawable/button_chip_background"
-        android:backgroundTint="#00aa44"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal">
-
-        <ImageView
-
-            android:layout_width="73dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
-
-            android:src="@drawable/baseline_add_24" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <TextView
-
-            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Quan Ly Film"
+            android:layout_margin="30dp"
             android:gravity="center"
-            android:textSize="30dp"
-            android:layout_width="wrap_content"
-            android:layout_height="45dp"
-            android:text="Thêm phim"/>
+            android:textStyle="bold"
+            android:textSize="30dp" />
+        <LinearLayout
+            android:id="@+id/add_movie"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/button_chip_background"
+            android:backgroundTint="#00aa44"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <ImageView
+
+                android:layout_width="73dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+
+                android:src="@drawable/baseline_add_24" />
+
+            <TextView
+
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:text="Thêm phim"/>
+        </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:nestedScrollingEnabled="false"
+            android:id="@+id/listquanly"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="56dp"/>
+
     </LinearLayout>
-<androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/listquanly"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="56dp"/>
+
+</androidx.core.widget.NestedScrollView>
     <include
         layout="@layout/bottomnavigation_layout"
         />
