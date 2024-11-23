@@ -56,21 +56,19 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
                 .load(movie.getPosterUri())
                 .placeholder(R.drawable.ic_launcher_background)
                 .into(holder.imageView);
-
-        // Kiểm tra trạng thái yêu thích của phim và thay đổi icon tương ứng
         if (movie.isLiked()) {
             holder.yeuthichbutton.setImageResource(R.drawable.heart_icon2);
         } else {
             holder.yeuthichbutton.setImageResource(R.drawable.heart_ic);
         }
 
-        // Xử lý sự kiện click vào view yêu thích
+
         holder.viewyeuthich.setOnClickListener(v -> {
             boolean isCurrentlyLiked = movie.isLiked();
             movie.setLiked(!isCurrentlyLiked);
             notifyItemChanged(position);
 
-            // Cập nhật trạng thái yêu thích trên Firestore
+
             FirebaseFirestore db = FirebaseFirestore.getInstance();
             db.collection("movies").document(movie.getId())
                     .update("isLiked", !isCurrentlyLiked)
@@ -80,6 +78,22 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
                     })
                     .addOnFailureListener(e -> {
                         Toast.makeText(context, "Lỗi khi cập nhật danh sách yêu thích!", Toast.LENGTH_SHORT).show();
+                    });
+        });
+        holder.itemView.setOnClickListener(v -> {
+            // Tăng số lượng watched
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            db.collection("movies").document(movie.getId())
+                    .update("watched", movie.Watched() + 1)
+                    .addOnSuccessListener(aVoid -> {
+                        movie.setWatched(movie.Watched() + 1);
+                        Toast.makeText(context, "Bạn vừa xem: " + movie.getTitle(), Toast.LENGTH_SHORT).show();
+                        if (movieClickListener != null) {
+                            movieClickListener.onMovieClick(movie);
+                        }
+                    })
+                    .addOnFailureListener(e -> {
+                        Toast.makeText(context, "Lỗi cập nhật lượt xem!", Toast.LENGTH_SHORT).show();
                     });
         });
 

@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "fpoly.ph53095.nhom3_du_an_1_pro1122"
-        minSdk = 28
+        minSdk = 27
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"

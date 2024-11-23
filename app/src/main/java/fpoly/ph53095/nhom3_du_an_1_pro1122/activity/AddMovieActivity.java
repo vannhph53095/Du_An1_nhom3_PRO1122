@@ -81,12 +81,12 @@ public class AddMovieActivity extends AppCompatActivity {
             Toast.makeText(this, "Vui lòng nhập giá trị hợp lệ cho rating và năm phát hành!", Toast.LENGTH_SHORT).show();
             return;
         }
-
+int watched=0;
         // Tạo ID và đối tượng Movie
         String id = db.collection("movies").document().getId();
         String posterUri = editTextUri.getText().toString().trim(); // Giả sử bạn có một EditText cho posterUri
 
-        Movie movie = new Movie(title, genre, ratingValue, description, director, releaseYearValue, posterUri, filmSource);
+        Movie movie = new Movie(title, genre, ratingValue, description, director, releaseYearValue, posterUri, filmSource ,watched);
         movie.setId(id);
 
         db.collection("movies").document(id)

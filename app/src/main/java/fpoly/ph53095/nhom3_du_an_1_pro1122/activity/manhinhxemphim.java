@@ -19,13 +19,14 @@ public class manhinhxemphim extends AppCompatActivity {
     private RatingBar ratingBarMoviexp;
     private VideoView filmScreen;
 
-
+    private ImageView btnBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manhinhxemphim);
 
         // Ánh xạ view
+        btnBack = findViewById(R.id.btnbackinmanhinhyeuthich);
         tvTitle = findViewById(R.id.tvTitle);
         tvGenre = findViewById(R.id.tvGenre);
         tvDescription = findViewById(R.id.tvDescription);
@@ -57,6 +58,8 @@ public class manhinhxemphim extends AppCompatActivity {
         filmScreen.setVideoURI(videoUri);
         filmScreen.start();
 
-
+        btnBack.setOnClickListener(v -> {
+            onBackPressed(); // Quay lại màn hình trước
+        });
     }
 }

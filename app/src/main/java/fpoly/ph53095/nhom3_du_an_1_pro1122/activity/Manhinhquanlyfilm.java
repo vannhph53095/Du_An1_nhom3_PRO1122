@@ -36,16 +36,20 @@ public class Manhinhquanlyfilm extends AppCompatActivity implements MovieAdapter
     private FirebaseFirestore db;
     private ImageView accout_ic, mhyeuthichbutton, home_icon;
     private String email;
+    private ImageView btnBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manhinhquanlyfilm);
 
-
+        btnBack = findViewById(R.id.btnbackinmanhinhyeuthich);
         addMovieLayout = findViewById(R.id.add_movie);
         listquanly = findViewById(R.id.listquanly);
         email = getIntent().getStringExtra("email");
         home_icon=findViewById(R.id.home_icon);
+        btnBack.setOnClickListener(v -> {
+            onBackPressed(); // Quay lại màn hình trước
+        });
         home_icon.setOnClickListener(v -> {
             Intent intent = new Intent(Manhinhquanlyfilm.this, TrangChu.class);
             intent.putExtra("email", email);
@@ -63,7 +67,7 @@ public class Manhinhquanlyfilm extends AppCompatActivity implements MovieAdapter
 
         accout_ic = findViewById(R.id.accout_ic);
         accout_ic.setOnClickListener(v -> {
-            if ("vannhph53095@gmail.com".equals(email)) {
+            if ("vannhph53095@gmail.com".equals(email) || "anhtvph52826@gmail.com".equals(email)) {
                 Intent intent = new Intent(Manhinhquanlyfilm.this, Manhinhadmin.class);
                 intent.putExtra("email", email);
                 startActivity(intent);
@@ -192,5 +196,6 @@ public class Manhinhquanlyfilm extends AppCompatActivity implements MovieAdapter
                 })
                 .setNegativeButton("Hủy", null)
                 .show();
+
     }
 }

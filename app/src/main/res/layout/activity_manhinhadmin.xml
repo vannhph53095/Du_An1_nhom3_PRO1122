@@ -5,113 +5,120 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.Manhinhadmin"
-    android:background="#ffff"
+    android:background="#ffffff"
     android:fitsSystemWindows="true"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".activity.Manhinhadmin">
+
+    <!-- Back Button -->
     <ImageView
         android:id="@+id/btnbackinmanhinhyeuthich"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/back_icon"
-        android:layout_width="50dp"
-        android:layout_height="50dp"/>
-<ImageView
-    android:layout_marginTop="20dp"
-    android:src="@drawable/admin_ic"
-    android:layout_gravity="center"
-    android:layout_width="200dp"
-    android:layout_height="200dp"
-    android:layout_marginBottom="50dp"
-    />
-<LinearLayout
-    android:gravity="center"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:weightSum="3">
-<TextView
-
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Người dùng mới"
-    android:textSize="30dp"
-    />
-   <ImageView
-       android:layout_width="40dp"
-       android:layout_height="40dp"
-       android:layout_marginLeft="10dp"
-       android:src="@drawable/redo"/>
-
-
-</LinearLayout>
-    <TextView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="start"
         android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:textSize="30dp"
-        android:text="vanhph53095@gmail.com"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-<Button
-    android:text="Quản Lý Người Dùng"
-    android:backgroundTint="#86e0b0"
-    android:layout_marginVertical="20dp"
-    android:layout_marginHorizontal="40dp"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"/>
-    <Button
-        android:id="@+id/btnquanlyfilm"
-        android:layout_marginBottom="20dp"
-        android:backgroundTint="#86e0b0"
-        android:text="Quản Lý Film"
-        android:layout_marginHorizontal="40dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <Button
-        android:id="@+id/lichsuadmin"
-        android:layout_marginBottom="20dp"
-        android:backgroundTint="#86e0b0"
-        android:text="Lịch sử"
-        android:layout_marginHorizontal="40dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_marginLeft="10dp"
+        android:background="@color/white"
+        android:contentDescription="Back"
+        android:src="@drawable/back_icon"
+        app:backgroundTint="@color/white" />
+
+    <!-- Admin Icon -->
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center"
+        android:src="@drawable/admin_ic" />
     <LinearLayout
-android:id="@+id/btnlogout"
-        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="3">
-        <TextView
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="16dp">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Xin Chào"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="#333333" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="vanhph53095@gmail.com"
+            android:textSize="26sp"
+            android:textColor="#555555" />
+    </LinearLayout>
+
+    <!-- Buttons -->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#ffffff"
+        android:layout_margin="16dp"
+        android:textSize="16sp"
+        android:backgroundTint="#86e0b0"
+        android:text="Quản Lý Người Dùng"
+
+
+      />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnquanlyfilm"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Quản Lý Film"
+        android:backgroundTint="#86e0b0"
+        android:textColor="#ffffff"
+        android:textSize="16sp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lichsuadmin"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Lịch sử"
+        android:backgroundTint="#86e0b0"
+        android:textColor="#ffffff"
+        android:textSize="16sp" />
+
+    <!-- Logout -->
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="LOG OUT"
-            android:textSize="30dp"
-            />
+            android:textSize="20sp"
+            android:textColor="#000000" />
+
         <ImageView
+            android:id="@+id/btnlogout"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
-            android:src="@drawable/logout_icon"/>
-
-
+            android:layout_marginStart="8dp"
+            android:src="@drawable/logout_icon" />
     </LinearLayout>
-    <RelativeLayout
+
+    <!-- Bottom Navigation -->
+    <include
+        layout="@layout/bottomnavigation_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    <TextView
-        android:textSize="20dp"
-        android:text="LogOut"
-        android:gravity="center"
-        android:layout_weight="1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"/>
-
-
-
-        <include
-            layout="@layout/bottomnavigation_layout" />
-    </RelativeLayout>
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

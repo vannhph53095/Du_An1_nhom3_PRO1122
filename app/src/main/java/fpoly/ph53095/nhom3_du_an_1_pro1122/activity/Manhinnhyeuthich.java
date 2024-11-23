@@ -30,13 +30,13 @@ public class Manhinnhyeuthich extends AppCompatActivity {
     private ArrayList<Movie> favoriteMovies;
     private ImageView accout_ic, mhyeuthichbutton, home_icon;
     private String email;
-
+    private ImageView btnBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_manhinnhyeuthich);
-
+        btnBack = findViewById(R.id.btnbackinmanhinhyeuthich);
         email = getIntent().getStringExtra("email");
         home_icon = findViewById(R.id.home_icon);
         home_icon.setOnClickListener(v -> {
@@ -54,7 +54,7 @@ public class Manhinnhyeuthich extends AppCompatActivity {
 
         accout_ic = findViewById(R.id.accout_ic);
         accout_ic.setOnClickListener(v -> {
-            if ("vannhph53095@gmail.com".equals(email)) {
+            if ("vannhph53095@gmail.com".equals(email) || "anhtvph52826@gmail.com".equals(email)) {
                 Intent intent = new Intent(Manhinnhyeuthich.this, Manhinhadmin.class);
                 intent.putExtra("email", email);
                 startActivity(intent);
@@ -116,5 +116,8 @@ public class Manhinnhyeuthich extends AppCompatActivity {
                         Toast.makeText(Manhinnhyeuthich.this, "Lỗi khi tải danh sách yêu thích", Toast.LENGTH_SHORT).show();
                     }
                 });
+        btnBack.setOnClickListener(v -> {
+            onBackPressed(); // Quay lại màn hình trước
+        });
     }
 }

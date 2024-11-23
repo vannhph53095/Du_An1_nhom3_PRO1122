@@ -21,13 +21,15 @@ public class Manhinhadmin extends AppCompatActivity {
     private ImageView accout_ic, mhyeuthichbutton, home_icon;
     private String email;
     private Button  btnlichsuadmin;
-private LinearLayout btnlogout;
+    private ImageView btnBack, btnLogout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_manhinhadmin);
         Button btnquanly = findViewById(R.id.btnquanlyfilm);
+        btnBack = findViewById(R.id.btnbackinmanhinhyeuthich);
+        btnLogout = findViewById(R.id.btnlogout);
         btnquanly.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,7 +59,7 @@ private LinearLayout btnlogout;
 
         accout_ic = findViewById(R.id.accout_ic);
         accout_ic.setOnClickListener(v -> {
-            if ("vannhph53095@gmail.com".equals(email)) {
+            if ("vannhph53095@gmail.com".equals(email) || "anhtvph52826@gmail.com".equals(email)) {
                 Intent intent = new Intent(Manhinhadmin.this, Manhinhadmin.class);
                 intent.putExtra("email", email);
                 startActivity(intent);
@@ -72,14 +74,15 @@ private LinearLayout btnlogout;
                 startActivity(intent);
             }
         });
-        btnlogout=findViewById(R.id.btnlogout);
-        btnlogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent =new Intent(Manhinhadmin.this, ManHinhDangNhap.class);
-                startActivity(intent);
-                finish();
-            }
+        btnBack.setOnClickListener(v -> {
+            onBackPressed(); // Quay lại màn hình trước
+        });
+        // Đăng xuất
+        btnLogout.setOnClickListener(v -> {
+            // Xử lý đăng xuất, có thể sử dụng Firebase Auth nếu bạn đang dùng
+            Intent intent = new Intent(Manhinhadmin.this, ManHinhDangNhap.class); // Quay lại màn hình đăng nhập
+            startActivity(intent);
+            finish(); // Kết thúc màn hình admin
         });
     }
 }

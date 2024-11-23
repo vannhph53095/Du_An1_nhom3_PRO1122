@@ -6,49 +6,87 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".activity.Manhinhquanlyfilm">
 
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Quan Ly Film"
-    android:layout_margin="30dp"
-    android:gravity="center"
-    android:textStyle="bold"
-   android:textSize="30dp" />
+    <!-- Header Section -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical">
+
+        <!-- Back Button -->
+        <ImageView
+            android:id="@+id/btnbackinmanhinhyeuthich"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="Back"
+            android:src="@drawable/back_icon" />
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quản Lý Phim"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_gravity="center" />
+    </LinearLayout>
+
+    <!-- Add Movie Button -->
     <LinearLayout
         android:id="@+id/add_movie"
-        android:layout_marginHorizontal="30dp"
-        android:background="@drawable/button_chip_background"
-        android:backgroundTint="#00aa44"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
+        android:padding="12dp"
+        android:background="@drawable/button_chip_background"
+        android:gravity="center_vertical">
 
+        <!-- Add Icon -->
         <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/baseline_add_24"
+            android:contentDescription="Add Movie" />
 
-            android:layout_width="73dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
-
-            android:src="@drawable/baseline_add_24" />
-
+        <!-- Add Movie Text -->
         <TextView
-
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textSize="30dp"
             android:layout_width="wrap_content"
-            android:layout_height="45dp"
-            android:text="Thêm phim"/>
+            android:layout_height="wrap_content"
+            android:text="Thêm phim"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
     </LinearLayout>
-<androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/listquanly"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="56dp"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listquanly"
+        android:layout_width="match_parent"
+        android:clipToPadding="false"
+        android:scrollbars="vertical"
+        android:paddingHorizontal="16dp"
+        android:layout_height="wrap_content"/>
     <include
         layout="@layout/bottomnavigation_layout"
         />
+    <!--    &lt;!&ndash; RecyclerView for Movie List &ndash;&gt;-->
+    <!--    <androidx.recyclerview.widget.RecyclerView-->
+    <!--        android:id="@+id/listquanly"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        android:layout_weight="1"-->
+    <!--        android:paddingHorizontal="16dp"-->
+    <!--        android:clipToPadding="false"-->
+    <!--        android:scrollbars="vertical" />-->
+
+    <!--    &lt;!&ndash; Bottom Navigation &ndash;&gt;-->
+    <!--    <include-->
+    <!--        layout="@layout/bottomnavigation_layout" />-->
 </LinearLayout>

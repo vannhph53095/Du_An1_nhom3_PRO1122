@@ -10,82 +10,89 @@
     android:orientation="vertical">
     <ImageView
         android:id="@+id/btnbackinmanhinhyeuthich"
-        android:layout_marginTop="20dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="start"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@color/white"
+        android:contentDescription="Back"
         android:src="@drawable/back_icon"
-        android:layout_width="50dp"
-        android:layout_height="50dp"/>
+        app:backgroundTint="@color/white" />
+
     <ImageView
-        android:src="@drawable/accout_ic"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="16dp"
         android:layout_gravity="center"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginBottom="50dp"
-        />
+        android:src="@drawable/accout_ic" />
+
     <LinearLayout
-        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="3">
-        <TextView
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="16dp">
 
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Người dùng mới"
-            android:textSize="30dp"
-            />
-        <ImageView
-            android:id="@+id/rewritenameclient"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
-            android:src="@drawable/redo"/>
+            android:layout_marginTop="8dp"
+            android:text="Xin Chào"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="#333333" />
 
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="vanhph53095@gmail.com"
+            android:textSize="26sp"
+            android:textColor="#555555" />
     </LinearLayout>
-    <TextView
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:textSize="30dp"
-        android:text="vanhph53095@gmail.com"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
     <Button
         android:id="@+id/btnlichsu"
         android:text="lịch sử "
-        android:backgroundTint="#86e0b0"
-        android:layout_marginVertical="20dp"
-        android:layout_marginHorizontal="40dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <Button
-        android:backgroundTint="#86e0b0"
-        android:text="Thông báo"
-        android:layout_marginHorizontal="40dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <LinearLayout
-
-        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="3">
-        <TextView
+        android:textColor="#ffffff"
+        android:layout_margin="16dp"
+        android:textSize="16sp"
+        android:backgroundTint="#86e0b0"/>
+    <Button
 
+        android:text="Thông báo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#ffffff"
+        android:layout_margin="16dp"
+        android:textSize="16sp"
+        android:backgroundTint="#86e0b0"/>
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="LOG OUT"
-            android:textSize="30dp"
-            />
+            android:textSize="20sp"
+            android:textColor="#000000" />
+
         <ImageView
+            android:id="@+id/btnlogout"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
-            android:src="@drawable/logout_icon"/>
-
-
+            android:layout_marginStart="8dp"
+            android:src="@drawable/logout_icon" />
     </LinearLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
