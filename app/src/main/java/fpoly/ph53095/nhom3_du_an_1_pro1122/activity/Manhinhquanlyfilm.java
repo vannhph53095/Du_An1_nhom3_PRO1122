@@ -3,6 +3,7 @@ package fpoly.ph53095.nhom3_du_an_1_pro1122.activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -74,7 +75,7 @@ public class Manhinhquanlyfilm extends AppCompatActivity implements MovieAdapter
         movieList = new ArrayList<>();
 
 
-        movieAdapter = new MovieAdapter(this, movieList, this); // Truyền `this` cho callback
+        movieAdapter = new MovieAdapter(this, movieList, this);
         listquanly.setAdapter(movieAdapter);
         listquanly.setLayoutManager(new GridLayoutManager(this, 2));
 
@@ -95,7 +96,8 @@ public class Manhinhquanlyfilm extends AppCompatActivity implements MovieAdapter
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             Movie movie = document.toObject(Movie.class);
 
-                            movie.setId(document.getId());
+                          movie.setId(document.getId());
+                            Log.d("12345", "loadMoviesFromFirestore: ");
                             movieList.add(movie);
                         }
                         movieAdapter.notifyDataSetChanged();

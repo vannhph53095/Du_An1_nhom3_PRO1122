@@ -13,14 +13,14 @@ public class Movie implements Serializable {
     private String posterUri; // URL của poster phim
     private String filmSource; // Nguồn phim (file video)
     private boolean isLiked; // Trạng thái "Yêu thích"
-
+private boolean isWatched;
     // Constructor không đối số
     public Movie() {
     }
 
     // Constructor đầy đủ thông tin
     public Movie(String id, String title, String genre, float rating, String description,
-                 String director, int releaseYear, String posterUri, String filmSource, boolean isLiked) {
+                 String director, int releaseYear, String posterUri, String filmSource, boolean isLiked,boolean isWatched) {
         this.id = id;
         this.title = title;
         this.genre = genre;
@@ -31,6 +31,7 @@ public class Movie implements Serializable {
         this.posterUri = posterUri;
         this.filmSource = filmSource;
         this.isLiked = isLiked;
+        this.isWatched = isWatched;
     }
 
 
@@ -45,6 +46,14 @@ public class Movie implements Serializable {
         this.posterUri = posterUri;
         this.filmSource = filmSource;
 
+    }
+
+    public boolean isWatched() {
+        return isWatched;
+    }
+
+    public void setWatched(boolean watched) {
+        isWatched = watched;
     }
 
     // Getter và Setter cho ID

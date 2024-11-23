@@ -51,6 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <Button
+        android:id="@+id/btnlichsu"
         android:text="lịch sử "
         android:backgroundTint="#86e0b0"
         android:layout_marginVertical="20dp"

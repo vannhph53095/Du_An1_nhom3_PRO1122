@@ -14,11 +14,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import fpoly.ph53095.nhom3_du_an_1_pro1122.Manhinhlichsu;
 import fpoly.ph53095.nhom3_du_an_1_pro1122.R;
 
 public class Manhinhadmin extends AppCompatActivity {
     private ImageView accout_ic, mhyeuthichbutton, home_icon;
     private String email;
+    private Button  btnlichsuadmin;
 private LinearLayout btnlogout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,6 @@ private LinearLayout btnlogout;
                 startActivity(intent);
 
 
-                finish();
             }
         });
         email = getIntent().getStringExtra("email");
@@ -43,7 +44,7 @@ private LinearLayout btnlogout;
             Intent intent = new Intent(Manhinhadmin.this, TrangChu.class);
             intent.putExtra("email", email);
             startActivity(intent);
-            finish();
+
         });
         mhyeuthichbutton=findViewById(R.id.mhyeuthichbutton);
         mhyeuthichbutton.setOnClickListener(v -> {
@@ -51,7 +52,7 @@ private LinearLayout btnlogout;
             Intent intent = new Intent(Manhinhadmin.this, Manhinnhyeuthich.class);
             intent.putExtra("email", email);
             startActivity(intent);
-            finish();
+
         });
 
         accout_ic = findViewById(R.id.accout_ic);
@@ -60,15 +61,24 @@ private LinearLayout btnlogout;
                 Intent intent = new Intent(Manhinhadmin.this, Manhinhadmin.class);
                 intent.putExtra("email", email);
                 startActivity(intent);
-                finish();
+
             }
         });
-
+        btnlichsuadmin=findViewById(R.id.lichsuadmin);
+        btnlichsuadmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Manhinhadmin.this, Manhinhlichsu.class);
+                startActivity(intent);
+            }
+        });
         btnlogout=findViewById(R.id.btnlogout);
         btnlogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent =new Intent(Manhinhadmin.this, ManHinhDangNhap.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

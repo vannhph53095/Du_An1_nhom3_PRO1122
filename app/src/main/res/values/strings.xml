@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">MyApp</string>
+    <string name="app_name">Nét phíc</string>
 
 
-    <string-array name="genre_array">
+    <string-array name="movie_genres">
         <item>Sci-fi</item>
         <item>Romance</item>
         <item>Action</item>

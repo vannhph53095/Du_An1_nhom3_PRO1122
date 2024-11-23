@@ -66,6 +66,14 @@
         android:layout_marginHorizontal="40dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/lichsuadmin"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#86e0b0"
+        android:text="Lịch sử"
+        android:layout_marginHorizontal="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
     <LinearLayout
 android:id="@+id/btnlogout"
         android:gravity="center"

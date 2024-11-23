@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activity.Manhinhquanlyfilm">
+
 <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -45,7 +46,8 @@
 <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/listquanly"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"/>
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="56dp"/>
     <include
         layout="@layout/bottomnavigation_layout"
         />

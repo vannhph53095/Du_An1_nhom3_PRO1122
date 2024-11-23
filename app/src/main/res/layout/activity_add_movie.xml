@@ -21,12 +21,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Tiêu đề phim" />
-
-    <EditText
-        android:id="@+id/editTextGenre"
+<TextView
+    android:textSize="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Thể loại"/>
+    <Spinner
+        android:id="@+id/spinnerGenre"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Thể loại phim" />
+
+        android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/editTextRating"

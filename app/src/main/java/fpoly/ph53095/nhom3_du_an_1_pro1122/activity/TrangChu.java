@@ -19,6 +19,7 @@ import java.util.List;
 
 import fpoly.ph53095.nhom3_du_an_1_pro1122.Adapter.MovieAdapter;
 import fpoly.ph53095.nhom3_du_an_1_pro1122.Adapter.viewPagerAdapter;
+import fpoly.ph53095.nhom3_du_an_1_pro1122.Manhinhlichsu;
 import fpoly.ph53095.nhom3_du_an_1_pro1122.R;
 import fpoly.ph53095.nhom3_du_an_1_pro1122.entity.Movie;
 
@@ -127,7 +128,7 @@ home_icon=findViewById(R.id.home_icon);
                     .get()
                     .addOnSuccessListener(documentSnapshot -> {
                         if (documentSnapshot.exists()) {
-                            boolean isLiked = documentSnapshot.getBoolean("isLiked");
+                            boolean isLiked = documentSnapshot.getBoolean("liked");
                             movie.setLiked(isLiked);
                             movieAdapter.notifyItemChanged(movieList.indexOf(movie));
                         }
@@ -164,6 +165,16 @@ home_icon=findViewById(R.id.home_icon);
 
     @Override
     public void onMovieClick(Movie movie) {
+        movie.setWatched(true);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("movies").document(movie.getId())
+                .update("isWatched", true)  // Cập nhật trạng thái watched
+                .addOnSuccessListener(aVoid -> {
+                    // Mở màn hình lịch sử và truyền thông tin phim
+                    Intent intent = new Intent(TrangChu.this, Manhinhlichsu.class);
+                    intent.putExtra("movie", movie);  // Chuyển đối tượng phim
+
+                });
         Intent intent = new Intent(TrangChu.this, manhinhxemphim.class);
         intent.putExtra("title", movie.getTitle());
         intent.putExtra("genre", movie.getGenre());
