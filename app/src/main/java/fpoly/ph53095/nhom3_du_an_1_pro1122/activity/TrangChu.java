@@ -3,6 +3,7 @@ package fpoly.ph53095.nhom3_du_an_1_pro1122.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ import java.util.List;
 import fpoly.ph53095.nhom3_du_an_1_pro1122.Adapter.MovieAdapter;
 import fpoly.ph53095.nhom3_du_an_1_pro1122.Adapter.viewPagerAdapter;
 import fpoly.ph53095.nhom3_du_an_1_pro1122.Manhinhlichsu;
+import fpoly.ph53095.nhom3_du_an_1_pro1122.Manhinhtheloai;
 import fpoly.ph53095.nhom3_du_an_1_pro1122.R;
 import fpoly.ph53095.nhom3_du_an_1_pro1122.entity.Movie;
 
@@ -31,7 +33,7 @@ public class TrangChu extends AppCompatActivity implements MovieAdapter.OnMovieC
     private FirebaseFirestore db;
 
     private String email;
-    private ImageView accout_ic,mhyeuthichbutton,home_icon;
+    private ImageView accout_ic,mhyeuthichbutton,home_icon,manhinhtheloaibtn;
     private ViewPager viewPagerMain;
     private viewPagerAdapter pagerAdapter;
 
@@ -61,7 +63,14 @@ public class TrangChu extends AppCompatActivity implements MovieAdapter.OnMovieC
 
         // Nhận email từ Intent
 
-
+        manhinhtheloaibtn=findViewById(R.id.manhinhtheloaibtn);
+        manhinhtheloaibtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(TrangChu.this, Manhinhtheloai.class);
+                startActivity(intent);
+            }
+        });
         // Khởi tạo RecyclerView và Firebase
         recyclerView = findViewById(R.id.recyclerView);
         db = FirebaseFirestore.getInstance();

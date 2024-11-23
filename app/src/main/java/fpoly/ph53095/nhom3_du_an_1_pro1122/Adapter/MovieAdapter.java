@@ -38,14 +38,12 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     public MovieAdapter(ArrayList<Movie> movieList, AddMovieActivity addMovieActivity) {
     }
 
-    // Phương thức tạo view holder cho mỗi item trong RecyclerView
     @Override
     public MovieViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_movie, parent, false);
         return new MovieViewHolder(view);
     }
 
-    // Phương thức gắn dữ liệu vào các view trong mỗi item
     @Override
     public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
         Movie movie = movieList.get(position);
@@ -56,21 +54,21 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         // Load hình ảnh bằng Glide từ URI của phim
         Glide.with(context)
                 .load(movie.getPosterUri())
-                .placeholder(R.drawable.ic_launcher_background) // Hình ảnh mặc định khi đang tải
+                .placeholder(R.drawable.ic_launcher_background)
                 .into(holder.imageView);
 
         // Kiểm tra trạng thái yêu thích của phim và thay đổi icon tương ứng
         if (movie.isLiked()) {
-            holder.yeuthichbutton.setImageResource(R.drawable.heart_icon2); // Icon yêu thích
+            holder.yeuthichbutton.setImageResource(R.drawable.heart_icon2);
         } else {
-            holder.yeuthichbutton.setImageResource(R.drawable.heart_ic); // Icon chưa yêu thích
+            holder.yeuthichbutton.setImageResource(R.drawable.heart_ic);
         }
 
         // Xử lý sự kiện click vào view yêu thích
         holder.viewyeuthich.setOnClickListener(v -> {
             boolean isCurrentlyLiked = movie.isLiked();
             movie.setLiked(!isCurrentlyLiked);
-            notifyItemChanged(position); // Cập nhật lại item sau khi thay đổi trạng thái
+            notifyItemChanged(position);
 
             // Cập nhật trạng thái yêu thích trên Firestore
             FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -97,23 +95,20 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             if (movieClickListener != null) {
                 movieClickListener.onMovieLongClick(movie);
             }
-            return true;  // Trả về true để chỉ ra rằng sự kiện đã được xử lý
+            return true;
         });
     }
 
-    // Trả về số lượng item trong danh sách
     @Override
     public int getItemCount() {
         return movieList.size();
     }
 
-    // Lớp ViewHolder để chứa các view của mỗi item
     public static class MovieViewHolder extends RecyclerView.ViewHolder {
         public TextView txtMovieTitle;
         public LinearLayout viewyeuthich;
         public ImageView imageView, yeuthichbutton;
 
-        // Constructor gán các view vào các biến
         public MovieViewHolder(View itemView) {
             super(itemView);
             txtMovieTitle = itemView.findViewById(R.id.txtMovieTitle);
@@ -123,9 +118,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         }
     }
 
-    // Interface cho các sự kiện click của người dùng
     public interface OnMovieClickListener {
-        void onMovieClick(Movie movie);           // Xử lý khi click vào item
-        void onMovieLongClick(Movie movie);       // Xử lý khi long click vào item
+        void onMovieClick(Movie movie);
+        void onMovieLongClick(Movie movie);
     }
 }

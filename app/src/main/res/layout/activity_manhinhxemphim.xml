@@ -7,86 +7,95 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activity.manhinhxemphim">
-<TextView
-    android:layout_margin="50dp"
-    android:text="Màn Hình Xem phim"
-android:gravity="center"
-    android:textSize="25dp"
-    android:textStyle="bold"
+<androidx.core.widget.NestedScrollView
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"/>
-
-    <VideoView
-        android:id="@+id/filmscreen"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="245dp" />
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        android:text="Title" />
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_margin="50dp"
+            android:text="Màn Hình Xem phim"
+            android:gravity="center"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-    <!-- Thể loại -->
-    <TextView
-        android:textStyle="bold"
-        android:id="@+id/tvGenre"
-        android:textSize="22sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Genre" />
+        <VideoView
+            android:id="@+id/filmscreen"
+            android:layout_width="match_parent"
+            android:layout_height="245dp" />
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:text="Title" />
 
-    <!-- Đánh giá -->
+        <!-- Thể loại -->
+        <TextView
+            android:textStyle="bold"
+            android:id="@+id/tvGenre"
+            android:textSize="22sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Genre" />
 
-    <RatingBar
-        android:layout_marginLeft="10dp"
-        android:id="@+id/ratingBarMoviexp"
-        style="?android:attr/ratingBarStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:numStars="5"
-        android:rating="0"
-        android:stepSize="0.5" />
+        <!-- Đánh giá -->
+
+        <RatingBar
+            android:layout_marginLeft="10dp"
+            android:id="@+id/ratingBarMoviexp"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:rating="0"
+            android:stepSize="0.5" />
 
 
 
-    <!-- Mô tả -->
-    <TextView
-        android:textStyle="bold"
-        android:textSize="22sp"
-        android:id="@+id/tvDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Description" />
+        <!-- Mô tả -->
+        <TextView
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:id="@+id/tvDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Description" />
 
-    <!-- Đạo diễn -->
-    <TextView
-        android:textStyle="bold"
-        android:textSize="22sp"
-        android:id="@+id/tvDirector"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Director" />
+        <!-- Đạo diễn -->
+        <TextView
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:id="@+id/tvDirector"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Director" />
 
-    <!-- Năm phát hành -->
-    <TextView
-        android:textStyle="bold"
-        android:textSize="22sp"
-        android:id="@+id/tvYear"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Year" />
-    <TextView
+        <!-- Năm phát hành -->
+        <TextView
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:id="@+id/tvYear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Year" />
+        <TextView
 
-        android:layout_marginVertical="20dp"
-        android:textStyle="bold"
-        android:textSize="25dp"
-        android:text="Bình luận"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listbinhluan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+            android:layout_marginVertical="20dp"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:text="Bình luận"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listbinhluan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
 </LinearLayout>

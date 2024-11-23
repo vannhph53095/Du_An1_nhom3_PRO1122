@@ -4,62 +4,74 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp">
-
-    <EditText
-        android:id="@+id/editTextUri"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Source ảnh" />
-    <EditText
-        android:id="@+id/editTextFilmSource"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Source film" />
-
-    <EditText
-        android:id="@+id/editTextTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Tiêu đề phim" />
-<TextView
-    android:textSize="20dp"
+<androidx.core.widget.NestedScrollView
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Thể loại"/>
-    <Spinner
-        android:id="@+id/spinnerGenre"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/editTextUri"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Source ảnh" />
+        <EditText
+            android:id="@+id/editTextFilmSource"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Source film" />
 
-    <EditText
-        android:id="@+id/editTextRating"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Đánh giá phim" />
+        <EditText
+            android:id="@+id/editTextTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tiêu đề phim" />
+        <TextView
+            android:textSize="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thể loại"/>
+        <Spinner
+            android:id="@+id/spinnerGenre"
+            android:layout_width="match_parent"
 
-    <EditText
-        android:id="@+id/editTextDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Mô tả phim" />
+            android:layout_height="wrap_content" />
 
-    <EditText
-        android:id="@+id/editTextDirector"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Đạo diễn phim" />
+        <EditText
+            android:id="@+id/editTextRating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Đánh giá phim" />
 
-    <EditText
-        android:id="@+id/editTextReleaseYear"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Năm phát hành" />
 
-    <Button
-        android:id="@+id/buttonAddMovie"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Thêm Phim" />
 
+        <EditText
+            android:id="@+id/editTextDirector"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Đạo diễn phim" />
+
+        <EditText
+            android:id="@+id/editTextReleaseYear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Năm phát hành" />
+        <EditText
+            android:id="@+id/editTextDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mô tả phim" />
+
+
+
+        <Button
+            android:id="@+id/buttonAddMovie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thêm Phim" />
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
 </LinearLayout>
