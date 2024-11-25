@@ -84,9 +84,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             // Tăng số lượng watched
             FirebaseFirestore db = FirebaseFirestore.getInstance();
             db.collection("movies").document(movie.getId())
-                    .update("watched", movie.Watched() + 1)
+                    .update("watched", movie.getWatched() + 1)
                     .addOnSuccessListener(aVoid -> {
-                        movie.setWatched(movie.Watched() + 1);
+                        movie.setWatched(movie.getWatched() + 1);
                         Toast.makeText(context, "Bạn vừa xem: " + movie.getTitle(), Toast.LENGTH_SHORT).show();
                         if (movieClickListener != null) {
                             movieClickListener.onMovieClick(movie);

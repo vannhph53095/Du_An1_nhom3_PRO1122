@@ -7,128 +7,135 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#ffffff"
-    tools:context=".activity.ManHinhDangNhap">
+    tools:context=".activity.ManHinhDangNhap"
+    android:padding="16dp">
 
+    <!-- Logo ứng dụng -->
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:src="@drawable/logoungdung"/>
+        android:src="@drawable/logoungdung"
+        android:contentDescription="Logo ứng dụng"
+        android:scaleType="fitCenter"
+        android:layout_marginBottom="20dp" />
 
+    <!-- Tiêu đề -->
     <TextView
-        android:paddingHorizontal="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Chào mừng bạn đã trở lại"
         android:textStyle="bold"
-        android:paddingTop="20dp"
-        android:textColor="#2296f3"/>
+        android:gravity="center"
+        android:textColor="#2296f3"
+        android:textSize="18sp"
+        android:layout_marginBottom="10dp" />
 
     <TextView
-        android:paddingHorizontal="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Vui lòng đăng nhập để tiếp tục"
         android:textStyle="bold"
-        android:textSize="25dp"/>
+        android:textSize="22sp"
+        android:gravity="center"
+        android:layout_marginBottom="20dp" />
 
+    <!-- Nhập email -->
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="10dp">
+        android:layout_marginBottom="12dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txtemail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#e0e0e0"
-            android:hint="Nhập email" />
+            android:hint="Nhập email"
+            android:inputType="textEmailAddress"
+            android:backgroundTint="#e0e0e0" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!-- Nhập mật khẩu -->
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="10dp">
+        android:layout_marginBottom="12dp">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txtpassword"
-            android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nhập password"
-            android:backgroundTint="#e0e0e0"/>
+            android:hint="Nhập mật khẩu"
+            android:inputType="textPassword"
+            android:backgroundTint="#e0e0e0" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!-- Checkbox Ghi nhớ tài khoản -->
     <CheckBox
+        android:id="@+id/chkghinho"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/chkghinho"
-        android:text="Ghi nhớ tài khoản"/>
+        android:text="Ghi nhớ tài khoản"
+        android:layout_marginBottom="20dp" />
 
+    <!-- Button Đăng nhập và Thoát -->
     <LinearLayout
-        android:paddingHorizontal="10dp"
-        android:weightSum="2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingRight="10dp">
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
+        android:weightSum="2">
 
         <Button
             android:id="@+id/btndangnhap"
-            android:layout_marginRight="10dp"
-            android:backgroundTint="#09f420"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginEnd="8dp"
             android:text="Đăng Nhập"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:backgroundTint="#09f420"
+            android:textColor="#FFFFFF" />
 
         <Button
             android:id="@+id/btnthoat"
-            android:backgroundTint="#f45b09"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginStart="8dp"
             android:text="Thoát"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-
+            android:backgroundTint="#f45b09"
+            android:textColor="#FFFFFF" />
     </LinearLayout>
-    <TextView
 
+    <!-- Quên mật khẩu -->
+    <TextView
         android:id="@+id/btn_text_clickable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Quên Mật Khẩu"
-        android:gravity="center"
-     android:padding="5dp"
+        android:text="Quên mật khẩu?"
+        android:textColor="#007BFF"
+        android:textStyle="bold"
+        android:gravity="end"
         android:layout_gravity="end"
-android:textStyle="bold"
-        android:layout_marginHorizontal="25dp"
-
+        android:layout_marginBottom="20dp"
         android:clickable="true"
         android:focusable="true" />
-    <!-- Tạo hiệu ứng button -->
 
-    <!-- Màu chữ đen -->
-
-<!--    <Button-->
-<!--        android:layout_width=""-->
-<!--        android:layout_height="40dp"-->
-<!--        android:text="Quên Mật Khâu"-->
-<!--        android:layout_marginBottom="10dp"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:layout_gravity="end"-->
-<!--        android:layout_marginHorizontal="20dp"-->
-<!--        />-->
+    <!-- Nhắc nhở đăng ký -->
     <TextView
-    android:padding="12dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="20dp"
-        android:text="Nếu bạn chưa có tài khoản"/>
+        android:textSize="16sp"
+        android:text="Nếu bạn chưa có tài khoản"
+        android:layout_marginBottom="10dp" />
+
+    <!-- Button Đăng ký -->
     <Button
-        android:layout_marginHorizontal="20dp"
         android:id="@+id/btndenmanhinhdangky"
         android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
         android:layout_height="wrap_content"
+        android:text="Đăng Ký"
         android:backgroundTint="#09a9f3"
-        android:text="Đăng ký"/>
+        android:textColor="#FFFFFF" />
+
 </LinearLayout>

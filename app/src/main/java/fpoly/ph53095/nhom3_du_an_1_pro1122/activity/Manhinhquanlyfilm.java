@@ -67,7 +67,7 @@ public class Manhinhquanlyfilm extends AppCompatActivity implements MovieAdapter
 
         accout_ic = findViewById(R.id.accout_ic);
         accout_ic.setOnClickListener(v -> {
-            if ("vannhph53095@gmail.com".equals(email) || "anhtvph52826@gmail.com".equals(email)) {
+            if ("vannhph53095@gmail.com".equals(email) || "anhtvph52826@gmail.com".equals(email) || "tunaph52894@gmail.com".equals(email)) {
                 Intent intent = new Intent(Manhinhquanlyfilm.this, Manhinhadmin.class);
                 intent.putExtra("email", email);
                 startActivity(intent);

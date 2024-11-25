@@ -13,15 +13,13 @@ public class Movie implements Serializable {
     private String posterUri; // URL của poster phim
     private String filmSource; // Nguồn phim (file video)
     private boolean isLiked; // Trạng thái "Yêu thích"
-private int Watched;
+    private int Watched;
     // Constructor không đối số
     public Movie() {
     }
 
     // Constructor đầy đủ thông tin
-    public Movie(String id, String title, String genre, float rating, String description,
-                 String director, int releaseYear, String posterUri, String filmSource, boolean isLiked,int Watched) {
-        this.id = id;
+    public Movie(String title, String genre, float rating, String description, String director, int releaseYear, String posterUri, String filmSource, int watched) {
         this.title = title;
         this.genre = genre;
         this.rating = rating;
@@ -30,34 +28,22 @@ private int Watched;
         this.releaseYear = releaseYear;
         this.posterUri = posterUri;
         this.filmSource = filmSource;
-        this.isLiked = isLiked;
-        this.Watched = Watched;
+        this.Watched = watched;
     }
 
 
-    public Movie(String title, String genre, float rating, String description,
-                 String director, int releaseYear, String posterUri, String filmSource) {
-        this.title = title;
-        this.genre = genre;
-        this.rating = rating;
-        this.description = description;
-        this.director = director;
-        this.releaseYear = releaseYear;
-        this.posterUri = posterUri;
-        this.filmSource = filmSource;
 
-    }
 
-    public Movie(String title, String genre, float ratingValue, String description, String director, int releaseYearValue, String posterUri, String filmSource, int watched) {
-    }
 
-    public int Watched() {
+
+    public int getWatched() {
         return Watched;
     }
 
     public void setWatched(int watched) {
-        Watched = watched;
+        this.Watched = watched;
     }
+
 
     // Getter và Setter cho ID
     public String getId() {
@@ -132,8 +118,7 @@ private int Watched;
     }
 
     // Getter và Setter cho Film Source
-    public String getFilmSource() {
-        return filmSource;
+    public String getFilmSource() {return filmSource;
     }
 
     public void setFilmSource(String filmSource) {

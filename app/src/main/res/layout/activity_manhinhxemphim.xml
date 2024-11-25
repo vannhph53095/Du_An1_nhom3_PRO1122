@@ -6,7 +6,6 @@
     android:background="@color/white"
     android:layout_height="match_parent"
     android:padding="16dp"
-
     tools:context=".activity.manhinhxemphim">
 
     <LinearLayout
@@ -123,8 +122,6 @@
                     android:textSize="16sp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
-        <!-- Phần bình luận -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -137,17 +134,43 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#090909"
             app:cardCornerRadius="12dp"
             app:cardElevation="6dp">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/listbinhluan"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="300dp"
                 android:padding="8dp"
                 android:scrollbars="vertical" />
         </androidx.cardview.widget.CardView>
+
+        <!-- Phần bình luận -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/etComment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Nhập bình luận..."
+                android:padding="8dp"
+                android:background="@drawable/edittext_background"
+                android:inputType="text" />
+
+            <Button
+                android:id="@+id/btnSendComment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="Gửi"
+                    android:background="@color/primary_color"
+                android:textColor="@color/white" />
+        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>

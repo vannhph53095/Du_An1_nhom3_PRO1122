@@ -78,7 +78,7 @@ public class MovieAdaptertop10 extends RecyclerView.Adapter<MovieAdaptertop10.Mo
             db.collection("movies").document(movie.getId())
                     .update("watched", FieldValue.increment(1))
                     .addOnSuccessListener(aVoid -> {
-                        movie.setWatched(movie.Watched() + 1); // Đảm bảo có hàm getWatched()
+                        movie.setWatched(movie.getWatched() + 1); // Đảm bảo có hàm getWatched()
                         Toast.makeText(context, "Bạn vừa xem: " + movie.getTitle(), Toast.LENGTH_SHORT).show();
                         if (movieClickListener != null) {
                             movieClickListener.onMovieClick(movie);
