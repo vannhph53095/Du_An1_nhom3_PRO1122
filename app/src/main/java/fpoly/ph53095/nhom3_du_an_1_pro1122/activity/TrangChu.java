@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,27 +32,32 @@ import fpoly.ph53095.nhom3_du_an_1_pro1122.entity.Movie;
 
 public class TrangChu extends AppCompatActivity implements MovieAdapter.OnMovieClickListener,MovieAdaptertop10.OnMovieClickListener {
 
-    private RecyclerView recyclerView,recyclerViewtop10;
+    private RecyclerView recyclerView, recyclerViewtop10;
     private MovieAdapter movieAdapter;
-    private  MovieAdaptertop10 movieAdaptertop10;
-    private List<Movie> movieList,movieListTop10;
+    private MovieAdaptertop10 movieAdaptertop10;
+    private List<Movie> movieList, movieListTop10;
     private FirebaseFirestore db;
 
     private String email;
-    private ImageView accout_ic,mhyeuthichbutton,home_icon,manhinhtheloaibtn;
+    private ImageView accout_ic, mhyeuthichbutton, home_icon, manhinhtheloaibtn;
     private ViewPager viewPagerMain;
     private viewPagerAdapter pagerAdapter;
 
     private int currentPage = 0;
     private final int SLIDE_DELAY = 3000;
     private Handler sliderHandler = new Handler();
+    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trang_chu);
 
+        // Ánh xạ SearchView
 
+
+        // RecyclerView phim mới cập nhật
+        recyclerView = findViewById(R.id.recyclerView);
         viewPagerMain = findViewById(R.id.viewPagerMain);
 
         int[] images = {
@@ -59,6 +65,22 @@ public class TrangChu extends AppCompatActivity implements MovieAdapter.OnMovieC
                 R.drawable.iteam2,
                 R.drawable.iteam3
         };
+        searchView = findViewById(R.id.searchView);
+
+        // Thêm sự kiện cho SearchView
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                searchMovies(query); // Gọi hàm tìm kiếm
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                searchMovies(newText); // Gợi ý tìm kiếm khi nhập
+                return true;
+            }
+        });
 
         pagerAdapter = new viewPagerAdapter(this, images);
         viewPagerMain.setAdapter(pagerAdapter);
@@ -68,11 +90,11 @@ public class TrangChu extends AppCompatActivity implements MovieAdapter.OnMovieC
 
         // Nhận email từ Intent
 
-        manhinhtheloaibtn=findViewById(R.id.manhinhtheloaibtn);
+        manhinhtheloaibtn = findViewById(R.id.manhinhtheloaibtn);
         manhinhtheloaibtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(TrangChu.this, Manhinhtheloai.class);
+                Intent intent = new Intent(TrangChu.this, Manhinhtheloai.class);
                 startActivity(intent);
             }
         });
@@ -80,7 +102,7 @@ public class TrangChu extends AppCompatActivity implements MovieAdapter.OnMovieC
         recyclerView = findViewById(R.id.recyclerView);
         db = FirebaseFirestore.getInstance();
         movieList = new ArrayList<>();
-        movieListTop10=new ArrayList<>();
+        movieListTop10 = new ArrayList<>();
         // Cài đặt adapter cho RecyclerView
         movieAdapter = new MovieAdapter(this, movieList, this);
         recyclerView.setAdapter(movieAdapter);
@@ -96,13 +118,13 @@ public class TrangChu extends AppCompatActivity implements MovieAdapter.OnMovieC
 
         // Sự kiện click icon tài khoản
         email = getIntent().getStringExtra("email");
-home_icon=findViewById(R.id.home_icon);
+        home_icon = findViewById(R.id.home_icon);
         home_icon.setOnClickListener(v -> {
             Intent intent = new Intent(TrangChu.this, TrangChu.class);
             intent.putExtra("email", email);
             startActivity(intent);
         });
-        mhyeuthichbutton=findViewById(R.id.mhyeuthichbutton);
+        mhyeuthichbutton = findViewById(R.id.mhyeuthichbutton);
         mhyeuthichbutton.setOnClickListener(v -> {
 
             Intent intent = new Intent(TrangChu.this, Manhinnhyeuthich.class);
@@ -180,7 +202,9 @@ home_icon=findViewById(R.id.home_icon);
                         Toast.makeText(this, "Lỗi khi tải phim: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
-    }private void loadtop10MoviesFromFirestore() {
+    }
+
+    private void loadtop10MoviesFromFirestore() {
         db.collection("movies")
                 .orderBy("watched", Query.Direction.DESCENDING) // Sắp xếp theo số lượt xem giảm dần
                 .limit(10) // Lấy top 10
@@ -223,11 +247,33 @@ home_icon=findViewById(R.id.home_icon);
         startActivity(intent);
 
     }
+
     public interface OnMovieClickListener {
         void onMovieClick(Movie movie);
     }
+
     @Override
     public void onMovieLongClick(Movie movie) {
 
+    }
+
+    private void searchMovies(String query) {
+        db.collection("movies")
+                .orderBy("title")
+                .startAt(query)
+                .endAt(query + "\uf8ff") // Ký tự đặc biệt để tìm kiếm toàn bộ khớp
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        movieList.clear();
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            Movie movie = document.toObject(Movie.class);
+                            movieList.add(movie);
+                        }
+                        movieAdapter.notifyDataSetChanged();
+                    } else {
+                        Toast.makeText(this, "Lỗi khi tìm kiếm: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 }
