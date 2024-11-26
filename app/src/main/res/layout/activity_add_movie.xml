@@ -2,8 +2,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="@color/white"
     android:padding="16dp">
+    <ImageView
+        android:id="@+id/btnbackinmanhinhyeuthich"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="start"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        android:background="@color/white"
+        android:contentDescription="Back"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/back_icon"
+        app:backgroundTint="@color/white" />
 <androidx.core.widget.NestedScrollView
     android:layout_width="match_parent"
     android:layout_height="wrap_content">

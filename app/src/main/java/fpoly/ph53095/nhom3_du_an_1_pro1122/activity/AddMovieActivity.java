@@ -1,9 +1,11 @@
 package fpoly.ph53095.nhom3_du_an_1_pro1122.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -25,7 +27,7 @@ public class AddMovieActivity extends AppCompatActivity {
     private FirebaseFirestore db;
     private MovieAdapter movieAdapter; // Adapter cho RecyclerView
     private ArrayList<Movie> movieList = new ArrayList<>(); // Danh sách phim
-
+    private ImageView btnBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +35,7 @@ public class AddMovieActivity extends AppCompatActivity {
 
         // Khởi tạo Firestore
         db = FirebaseFirestore.getInstance();
-
+        btnBack = findViewById(R.id.btnbackinmanhinhyeuthich);
         // Ánh xạ view
         editTextUri=findViewById(R.id.editTextUri);
         editTextFilmSource = findViewById(R.id.editTextFilmSource);
@@ -50,7 +52,9 @@ public class AddMovieActivity extends AppCompatActivity {
 
         // Khởi tạo adapter
         movieAdapter = new MovieAdapter(movieList, this);
-
+        btnBack.setOnClickListener(v -> {
+            onBackPressed(); // Quay lại màn hình trước
+        });
         // Xử lý sự kiện khi nhấn nút thêm phim
         buttonAddMovie.setOnClickListener(v -> addMovie());
     }
