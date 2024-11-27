@@ -52,26 +52,8 @@ public class MovieAdaptertop10 extends RecyclerView.Adapter<MovieAdaptertop10.Mo
                 .placeholder(R.drawable.ic_launcher_background)
                 .into(holder.imageView);
 
-        // Hiển thị trạng thái yêu thích
-        holder.yeuthichbutton.setImageResource(movie.isLiked() ? R.drawable.heart_icon2 : R.drawable.heart_ic);
 
-        // Xử lý click vào yêu thích
-        holder.viewyeuthich.setOnClickListener(v -> {
-            boolean isCurrentlyLiked = movie.isLiked();
-            movie.setLiked(!isCurrentlyLiked);
-            notifyItemChanged(position);
 
-            FirebaseFirestore db = FirebaseFirestore.getInstance();
-            db.collection("movies").document(movie.getId())
-                    .update("isLiked", !isCurrentlyLiked)
-                    .addOnSuccessListener(aVoid -> {
-                        holder.yeuthichbutton.setImageResource(!isCurrentlyLiked ? R.drawable.heart_icon2 : R.drawable.heart_ic);
-                        Toast.makeText(context, !isCurrentlyLiked ? "Đã thêm vào danh sách yêu thích!" : "Đã xóa khỏi danh sách yêu thích!", Toast.LENGTH_SHORT).show();
-                    })
-                    .addOnFailureListener(e -> Toast.makeText(context, "Lỗi khi cập nhật danh sách yêu thích!", Toast.LENGTH_SHORT).show());
-        });
-
-        // Xử lý click vào item
         holder.itemView.setOnClickListener(v -> {
             // Tăng lượt xem
             FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -87,7 +69,7 @@ public class MovieAdaptertop10 extends RecyclerView.Adapter<MovieAdaptertop10.Mo
                     .addOnFailureListener(e -> Toast.makeText(context, "Lỗi cập nhật lượt xem!", Toast.LENGTH_SHORT).show());
         });
 
-        // Xử lý long click vào item
+
         holder.itemView.setOnLongClickListener(v -> {
             if (movieClickListener != null) {
                 movieClickListener.onMovieLongClick(movie);

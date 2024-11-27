@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:textSize="35dp"
             android:gravity="center"
-            android:text="Lịch sử"/>
+            android:text="Phim đã xem"/>
         <androidx.recyclerview.widget.RecyclerView
 
             android:id="@+id/listlichsu"

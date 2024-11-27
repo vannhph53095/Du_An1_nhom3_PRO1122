@@ -5,10 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -34,9 +36,11 @@ public class Manhinhquanlyfilm extends AppCompatActivity implements MovieAdapter
     private MovieAdapter movieAdapter;
     private List<Movie> movieList;
     private FirebaseFirestore db;
+
     private ImageView accout_ic, mhyeuthichbutton, home_icon;
     private String email;
     private ImageView btnBack;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +50,7 @@ public class Manhinhquanlyfilm extends AppCompatActivity implements MovieAdapter
         addMovieLayout = findViewById(R.id.add_movie);
         listquanly = findViewById(R.id.listquanly);
         email = getIntent().getStringExtra("email");
-        home_icon=findViewById(R.id.home_icon);
+        home_icon = findViewById(R.id.home_icon);
         btnBack.setOnClickListener(v -> {
             onBackPressed(); // Quay lại màn hình trước
         });
@@ -56,7 +60,7 @@ public class Manhinhquanlyfilm extends AppCompatActivity implements MovieAdapter
             startActivity(intent);
             finish();
         });
-        mhyeuthichbutton=findViewById(R.id.mhyeuthichbutton);
+        mhyeuthichbutton = findViewById(R.id.mhyeuthichbutton);
         mhyeuthichbutton.setOnClickListener(v -> {
 
             Intent intent = new Intent(Manhinhquanlyfilm.this, Manhinnhyeuthich.class);
@@ -100,7 +104,7 @@ public class Manhinhquanlyfilm extends AppCompatActivity implements MovieAdapter
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             Movie movie = document.toObject(Movie.class);
 
-                          movie.setId(document.getId());
+                            movie.setId(document.getId());
                             Log.d("12345", "loadMoviesFromFirestore: ");
                             movieList.add(movie);
                         }
@@ -114,16 +118,21 @@ public class Manhinhquanlyfilm extends AppCompatActivity implements MovieAdapter
     @Override
     public void onMovieClick(Movie movie) {
 
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Chỉnh sửa thông tin phim");
-
 
         View dialogView = getLayoutInflater().inflate(R.layout.dialog_edit_movie, null);
         builder.setView(dialogView);
 
+
+        Spinner spi = dialogView.findViewById(R.id.spinnerGenredit);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.movie_genres, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spi.setAdapter(adapter);
+
         EditText editFilmSource = dialogView.findViewById(R.id.editTextFilmSource);
         EditText editTitle = dialogView.findViewById(R.id.editTitle);
-        EditText editGenre = dialogView.findViewById(R.id.editGenre);
         EditText editDescription = dialogView.findViewById(R.id.editDescription);
         EditText editAuthor = dialogView.findViewById(R.id.editAuthor);
         RatingBar ratingBar = dialogView.findViewById(R.id.ratingBar);
@@ -131,28 +140,30 @@ public class Manhinhquanlyfilm extends AppCompatActivity implements MovieAdapter
 
         editFilmSource.setText(movie.getFilmSource());
         editTitle.setText(movie.getTitle());
-        editGenre.setText(movie.getGenre());
         editDescription.setText(movie.getDescription());
         editAuthor.setText(movie.getDirector());
         ratingBar.setRating((float) movie.getRating());
-
 
         if (movie.getPosterUri() != null && !movie.getPosterUri().isEmpty()) {
             Glide.with(this)
                     .load(movie.getPosterUri())
                     .into(imagePoster);
-
         }
-
 
         builder.setPositiveButton("Lưu", (dialog, which) -> {
             movie.setFilmSource(editFilmSource.getText().toString());
             movie.setTitle(editTitle.getText().toString());
-            movie.setGenre(editGenre.getText().toString());
+
+
+            String genre = spi.getSelectedItem() != null ? spi.getSelectedItem().toString() : "Thể loại mặc định";
+            movie.setGenre(genre);
+
             movie.setDescription(editDescription.getText().toString());
             movie.setDirector(editAuthor.getText().toString());
-            movie.setRating(ratingBar.getRating());
 
+
+            float rating = ratingBar.getRating() != 0 ? ratingBar.getRating() : 3.0f; // Gán rating mặc định là 3.0 nếu rating là 0
+            movie.setRating(rating);
 
             db.collection("movies").document(movie.getId())
                     .set(movie)
@@ -170,19 +181,15 @@ public class Manhinhquanlyfilm extends AppCompatActivity implements MovieAdapter
     }
 
     @Override
-
     public void onMovieLongClick(Movie movie) {
-
-        if (movie.getId() == null) {
+        if (movie.getId() == null || movie.getId().isEmpty()) {
             Toast.makeText(this, "Lỗi: ID của phim không xác định.", Toast.LENGTH_SHORT).show();
             return;
         }
 
-
         new AlertDialog.Builder(this)
                 .setMessage("Bạn có chắc muốn xóa bộ phim này?")
                 .setPositiveButton("Xóa", (dialog, which) -> {
-
                     db.collection("movies").document(movie.getId())
                             .delete()
                             .addOnSuccessListener(aVoid -> {
@@ -196,6 +203,5 @@ public class Manhinhquanlyfilm extends AppCompatActivity implements MovieAdapter
                 })
                 .setNegativeButton("Hủy", null)
                 .show();
-
     }
 }

@@ -1,6 +1,7 @@
 package fpoly.ph53095.nhom3_du_an_1_pro1122.Adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,15 +28,15 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     private List<Movie> movieList;
     private Context context;
     private OnMovieClickListener movieClickListener;
+    private SharedPreferences sharedPreferences;
 
     // Constructor với đối số cho context, danh sách phim, và listener sự kiện click
     public MovieAdapter(Context context, List<Movie> movieList, OnMovieClickListener listener) {
         this.context = context;
         this.movieList = movieList;
         this.movieClickListener = listener;
-    }
-
-    public MovieAdapter(ArrayList<Movie> movieList, AddMovieActivity addMovieActivity) {
+        // Khởi tạo SharedPreferences một lần
+        this.sharedPreferences = context.getSharedPreferences("movie_preferences", Context.MODE_PRIVATE);
     }
 
     @Override
@@ -56,19 +57,29 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
                 .load(movie.getPosterUri())
                 .placeholder(R.drawable.ic_launcher_background)
                 .into(holder.imageView);
-        if (movie.isLiked()) {
+
+        // Kiểm tra trạng thái yêu thích từ SharedPreferences
+        boolean isLiked = sharedPreferences.getBoolean(movie.getId(), movie.isLiked());
+        movie.setLiked(isLiked);
+
+        // Cập nhật biểu tượng trái tim
+        if (isLiked) {
             holder.yeuthichbutton.setImageResource(R.drawable.heart_icon2);
         } else {
             holder.yeuthichbutton.setImageResource(R.drawable.heart_ic);
         }
-
 
         holder.viewyeuthich.setOnClickListener(v -> {
             boolean isCurrentlyLiked = movie.isLiked();
             movie.setLiked(!isCurrentlyLiked);
             notifyItemChanged(position);
 
+            // Lưu trạng thái vào SharedPreferences
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean(movie.getId(), !isCurrentlyLiked);
+            editor.apply();
 
+            // Cập nhật vào Firestore
             FirebaseFirestore db = FirebaseFirestore.getInstance();
             db.collection("movies").document(movie.getId())
                     .update("isLiked", !isCurrentlyLiked)
@@ -80,8 +91,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
                         Toast.makeText(context, "Lỗi khi cập nhật danh sách yêu thích!", Toast.LENGTH_SHORT).show();
                     });
         });
+
+        // Xử lý sự kiện click vào item (tăng số lượng watched)
         holder.itemView.setOnClickListener(v -> {
-            // Tăng số lượng watched
             FirebaseFirestore db = FirebaseFirestore.getInstance();
             db.collection("movies").document(movie.getId())
                     .update("watched", movie.getWatched() + 1)
@@ -95,13 +107,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
                     .addOnFailureListener(e -> {
                         Toast.makeText(context, "Lỗi cập nhật lượt xem!", Toast.LENGTH_SHORT).show();
                     });
-        });
-
-        // Xử lý sự kiện click vào item
-        holder.itemView.setOnClickListener(v -> {
-            if (movieClickListener != null) {
-                movieClickListener.onMovieClick(movie);
-            }
         });
 
         // Xử lý sự kiện long click vào item

@@ -26,20 +26,20 @@
         android:hint="Tiêu đề phim"
         android:inputType="text" />
 
-    <EditText
-        android:id="@+id/editGenre"
+    <Spinner
+        android:id="@+id/spinnerGenredit"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Thể loại"
-        android:inputType="text" />
 
-    <EditText
-        android:id="@+id/editDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Mô tả"
-        android:inputType="textMultiLine" />
+        android:layout_height="wrap_content" />
 
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:stepSize="0.5" />
     <EditText
         android:id="@+id/editAuthor"
         android:layout_width="match_parent"
@@ -47,10 +47,11 @@
         android:hint="Tác giả"
         android:inputType="text" />
 
-    <RatingBar
-        android:id="@+id/ratingBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:numStars="5"
-        android:stepSize="0.5" />
-   </LinearLayout>
+
+    <EditText
+    android:id="@+id/editDescription"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Mô tả"
+    android:inputType="textMultiLine"/>
+</LinearLayout>

@@ -1,6 +1,9 @@
 package fpoly.ph53095.nhom3_du_an_1_pro1122;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -17,8 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fpoly.ph53095.nhom3_du_an_1_pro1122.Adapter.MovieAdapter;
-import fpoly.ph53095.nhom3_du_an_1_pro1122.activity.Manhinnhyeuthich;
 import fpoly.ph53095.nhom3_du_an_1_pro1122.entity.Movie;
+
 public class Manhinhlichsu extends AppCompatActivity {
 
     private RecyclerView recyclerView;
@@ -41,38 +44,45 @@ public class Manhinhlichsu extends AppCompatActivity {
         recyclerView = findViewById(R.id.listlichsu);
         watchedMovies = new ArrayList<>();
 
-        // Gọi phương thức để tải các phim đã xem
+        // Gọi phương thức để tải các phim đã xem từ SharedPreferences
         loadWatchedMovies();
     }
 
     private void loadWatchedMovies() {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("movies")
-                .whereEqualTo("isWatched", true)
-                .get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        watchedMovies.clear();
-                        for (QueryDocumentSnapshot document : task.getResult()) {
-                            Movie movie = document.toObject(Movie.class);
-                            watchedMovies.add(movie);
-                        }
-                        // Cập nhật adapter với danh sách mới
-                        movieAdapter = new MovieAdapter(this, watchedMovies, new MovieAdapter.OnMovieClickListener() {
-                            @Override
-                            public void onMovieClick(Movie movie) {
-                                // Xử lý click nếu cần
-                            }
+        SharedPreferences sharedPreferences = getSharedPreferences("movie_preferences", Context.MODE_PRIVATE);
 
-                            @Override
-                            public void onMovieLongClick(Movie movie) {
-                                // Xử lý long click nếu cần
-                            }
-                        });
-                        recyclerView.setAdapter(movieAdapter);
-                    } else {
-                        Toast.makeText(Manhinhlichsu.this, "Lỗi khi tải danh sách phim đã xem", Toast.LENGTH_SHORT).show();
-                    }
-                });
+        // Lấy tất cả các phim đã xem từ SharedPreferences
+        for (String movieId : sharedPreferences.getAll().keySet()) {
+            boolean isWatched = sharedPreferences.getBoolean(movieId, false);
+            if (isWatched) {
+                // Tạo đối tượng Movie từ Firestore hoặc từ danh sách đã có
+                // Ví dụ: Movie movie = getMovieById(movieId); (Hàm này lấy phim từ Firestore nếu cần)
+                Movie movie = getMovieById(movieId);  // Ví dụ, bạn có thể tạo một hàm lấy thông tin phim từ Firestore
+                watchedMovies.add(movie);
+            }
+        }
+
+        // Cập nhật adapter với danh sách phim đã xem
+        movieAdapter = new MovieAdapter(this, watchedMovies, new MovieAdapter.OnMovieClickListener() {
+            @Override
+            public void onMovieClick(Movie movie) {
+                // Xử lý click vào phim khi xem lịch sử
+            }
+
+            @Override
+            public void onMovieLongClick(Movie movie) {
+                // Xử lý long click vào phim nếu cần
+            }
+        });
+
+        recyclerView.setAdapter(movieAdapter);
+    }
+
+    // Phương thức này giả sử bạn có một cách để lấy Movie từ Firestore nếu cần
+    private Movie getMovieById(String movieId) {
+        // Truy vấn Firestore để lấy thông tin chi tiết phim, ví dụ:
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        // Tạo đối tượng Movie và lấy thông tin từ Firestore (có thể dùng callback hoặc Future)
+        return new Movie();  // Trả về một Movie giả lập, bạn cần điều chỉnh theo logic thực tế
     }
 }

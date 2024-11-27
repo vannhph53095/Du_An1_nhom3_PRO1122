@@ -27,21 +27,8 @@
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop" />
 
-            <LinearLayout
-                android:id="@+id/viewyeuthich"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="4dp"
-                android:layout_gravity="start|top"
-                android:gravity="center"
-                android:background="@drawable/backgroud_nho">
 
-                <ImageView
-                    android:id="@+id/yeuthichbutton"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:src="@drawable/heart_ic" />
-            </LinearLayout>
+
         </FrameLayout>
 
         <TextView
