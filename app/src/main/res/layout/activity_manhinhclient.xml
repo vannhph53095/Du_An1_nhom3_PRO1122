@@ -22,11 +22,21 @@
         app:backgroundTint="@color/white" />
 
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="16dp"
+        android:id="@+id/clientavatar"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
         android:layout_gravity="center"
-        android:src="@drawable/accout_ic" />
+        android:src="@drawable/accout_ic"
+        android:contentDescription="Avatar" />
+
+    <Button
+        android:layout_gravity="center"
+        android:id="@+id/btnChangeAvatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change Avatar"
+        android:layout_centerHorizontal="true"/>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -56,13 +66,13 @@
 
     <Button
         android:id="@+id/btnlichsu"
-        android:text="Lịch sử"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#ffffff"
         android:layout_margin="16dp"
-        android:textSize="16sp"
-        android:backgroundTint="#86e0b0"/>
+        android:backgroundTint="#86e0b0"
+        android:text="Lịch sử"
+        android:textColor="#ffffff"
+        android:textSize="16sp" />
 
     <Button
         android:text="Thông báo"

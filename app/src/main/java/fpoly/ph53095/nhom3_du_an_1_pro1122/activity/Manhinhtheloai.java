@@ -1,18 +1,15 @@
-package fpoly.ph53095.nhom3_du_an_1_pro1122;
+package fpoly.ph53095.nhom3_du_an_1_pro1122.activity;
 
 import android.os.Bundle;
 import android.widget.ImageView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 
 import fpoly.ph53095.nhom3_du_an_1_pro1122.Adapter.MoviePagerAdapter;
+import fpoly.ph53095.nhom3_du_an_1_pro1122.R;
 
 public class Manhinhtheloai extends AppCompatActivity {
     private TabLayout tabLayout;

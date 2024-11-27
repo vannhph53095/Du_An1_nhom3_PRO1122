@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -26,7 +27,6 @@ import fpoly.ph53095.nhom3_du_an_1_pro1122.Adapter.MovieAdapter;
 import fpoly.ph53095.nhom3_du_an_1_pro1122.Adapter.MovieAdaptertop10;
 import fpoly.ph53095.nhom3_du_an_1_pro1122.Adapter.viewPagerAdapter;
 import fpoly.ph53095.nhom3_du_an_1_pro1122.Manhinhlichsu;
-import fpoly.ph53095.nhom3_du_an_1_pro1122.Manhinhtheloai;
 import fpoly.ph53095.nhom3_du_an_1_pro1122.R;
 import fpoly.ph53095.nhom3_du_an_1_pro1122.entity.Movie;
 
@@ -38,7 +38,7 @@ public class TrangChu extends AppCompatActivity implements MovieAdapter.OnMovieC
     private List<Movie> movieList, movieListTop10;
     private FirebaseFirestore db;
 
-    private String email;
+    private String email,avatarUrl;
     private ImageView accout_ic, mhyeuthichbutton, home_icon, manhinhtheloaibtn;
     private ViewPager viewPagerMain;
     private viewPagerAdapter pagerAdapter;
@@ -115,13 +115,18 @@ public class TrangChu extends AppCompatActivity implements MovieAdapter.OnMovieC
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerViewtop10.setLayoutManager(layoutManager);
         loadtop10MoviesFromFirestore();
+        accout_ic = findViewById(R.id.avatar_ic);
+        email = getIntent().getStringExtra("email");
+        avatarUrl=getIntent().getStringExtra("avatar");
+
 
         // Sự kiện click icon tài khoản
-        email = getIntent().getStringExtra("email");
+
         home_icon = findViewById(R.id.home_icon);
         home_icon.setOnClickListener(v -> {
             Intent intent = new Intent(TrangChu.this, TrangChu.class);
             intent.putExtra("email", email);
+            avatarUrl=getIntent().getStringExtra("avatar");
             startActivity(intent);
         });
         mhyeuthichbutton = findViewById(R.id.mhyeuthichbutton);
@@ -129,6 +134,7 @@ public class TrangChu extends AppCompatActivity implements MovieAdapter.OnMovieC
 
             Intent intent = new Intent(TrangChu.this, Manhinnhyeuthich.class);
             intent.putExtra("email", email);
+            avatarUrl=getIntent().getStringExtra("avatar");
             startActivity(intent);
 
         });
@@ -137,11 +143,14 @@ public class TrangChu extends AppCompatActivity implements MovieAdapter.OnMovieC
         accout_ic.setOnClickListener(v -> {
             if ("vannhph53095@gmail.com".equals(email) || "anhtvph52826@gmail.com".equals(email) || "tunaph52894@gmail.com".equals(email)) {
                 Intent intent = new Intent(TrangChu.this, Manhinhadmin.class);
+                intent.putExtra("avatar", avatarUrl); // Gửi URL avatar
                 intent.putExtra("email", email);
                 startActivity(intent);
 
             } else {
                 Intent intent = new Intent(TrangChu.this, Manhinhclient.class);
+                intent.putExtra("avatar", avatarUrl); // Gửi URL avatar
+                intent.putExtra("email", email);
                 startActivity(intent);
 
             }

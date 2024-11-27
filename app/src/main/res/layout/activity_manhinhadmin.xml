@@ -25,11 +25,20 @@
 
     <!-- Admin Icon -->
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="16dp"
+        android:id="@+id/adminavatar"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
         android:layout_gravity="center"
-        android:src="@drawable/admin_ic" />
+        android:layout_marginTop="16dp"
+        android:scaleType="centerCrop"
+        android:background="@drawable/hinhtron" />
+
+    <Button
+        android:id="@+id/changeimg"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chọn ảnh"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -81,16 +90,6 @@
         android:textColor="#ffffff"
         android:textSize="16sp" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/lichsuadmin"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="Lịch sử"
-        android:backgroundTint="#86e0b0"
-        android:textColor="#ffffff"
-        android:textSize="16sp" />
 
     <!-- Logout -->
     <LinearLayout

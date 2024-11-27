@@ -28,6 +28,7 @@
                 >
 
                 <ImageView
+                    android:id="@+id/avatar_ic"
                     android:layout_weight="1"
                     android:src="@drawable/accout_ic"
                     android:layout_width="50dp"
