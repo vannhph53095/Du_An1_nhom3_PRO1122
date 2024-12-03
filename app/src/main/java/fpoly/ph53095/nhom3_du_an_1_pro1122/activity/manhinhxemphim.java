@@ -4,15 +4,40 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;  // Import Log
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 import android.widget.MediaController;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 import fpoly.ph53095.nhom3_du_an_1_pro1122.R;
+import fpoly.ph53095.nhom3_du_an_1_pro1122.entity.Comment;
 
 public class manhinhxemphim extends AppCompatActivity {
 
@@ -21,6 +46,11 @@ public class manhinhxemphim extends AppCompatActivity {
     private VideoView filmScreen;
     private ImageView btnBack;
 
+    Button btnSendComment;
+    DatabaseReference mDatabase;
+
+    List<Comment> comments;
+    CommentAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +60,8 @@ public class manhinhxemphim extends AppCompatActivity {
         tvTitle = findViewById(R.id.tvTitle);
         tvGenre = findViewById(R.id.tvGenre);
         tvDescription = findViewById(R.id.tvDescription);
+        btnSendComment = findViewById(R.id.btnSendComment);
+        //region sss
         tvDescription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,8 +122,7 @@ public class manhinhxemphim extends AppCompatActivity {
 
             Uri videoUri = Uri.parse(mp4Url);
             filmScreen.setVideoURI(videoUri);
-
-
+            //viết ra email m đi tunaph52894@gmail.com
             tvTitle.setText(title);
             tvGenre.setText("  Thể loại:" + genre);
             tvDescription.setText("  Nội dung phim: " + description);
@@ -125,5 +156,80 @@ public class manhinhxemphim extends AppCompatActivity {
 
 
         btnBack.setOnClickListener(v -> onBackPressed());
+        //endregion
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        String titleeeee = getIntent().getStringExtra("title");
+        mDatabase = FirebaseDatabase.getInstance().getReference("comments").child(titleeeee);
+
+        RecyclerView listbinhluan = findViewById(R.id.listbinhluan);
+        EditText etComment = findViewById(R.id.etComment);
+        Button btnSendComment = findViewById(R.id.btnSendComment);
+        loadData();
+        comments = new ArrayList<>();
+        adapter = new CommentAdapter(comments);
+        listbinhluan.setLayoutManager(new LinearLayoutManager(this));
+        listbinhluan.setAdapter(adapter);
+
+
+
+        btnSendComment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String commentText = etComment.getText().toString();
+                if (!commentText.isEmpty()) {
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    if (user != null) {
+                        String username = user.getEmail();
+                        String movieTitle = tvTitle.getText().toString();
+                        Comment newComment = new Comment(username, commentText, movieTitle);
+                        DatabaseReference movieCommentsRef = mDatabase.child(movieTitle);
+                        String commentId = movieCommentsRef.push().getKey();
+                        movieCommentsRef.child(commentId).setValue(newComment)
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+//                                        comments.add(newComment);
+//                                        adapter.notifyItemInserted(comments.size() - 1);
+                                        loadData();
+                                        etComment.setText("");
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(manhinhxemphim.this, "Failed to add comment", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                    } else {
+                        Toast.makeText(manhinhxemphim.this, "Bạn cần đăng nhập để bình luận", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
+
     }
+    void loadData(){
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                comments.clear();
+                for (DataSnapshot movieSnapshot : dataSnapshot.getChildren()) {
+                    for (DataSnapshot commentSnapshot : movieSnapshot.getChildren()) {
+                        Comment comment = commentSnapshot.getValue(Comment.class);
+                        comments.add(comment);
+                    }
+                }
+
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.w("manhinhxemphim", "loadComments:onCancelled", databaseError.toException());
+                Toast.makeText(manhinhxemphim.this, "Failed to load comments.",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 }

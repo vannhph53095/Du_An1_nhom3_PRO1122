@@ -1,0 +1,1 @@
+package fpoly.ph53095.nhom3_du_an_1_pro1122.entity;import java.util.Map;public class Comment {    public String author;    public String text;    public String movieTitle;    public Comment() {}    public Comment(String author, String text, String movieTitle) {        this.author = author;        this.text = text;        this.movieTitle = movieTitle;    }}

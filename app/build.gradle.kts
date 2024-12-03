@@ -42,6 +42,7 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.1.1"))
     implementation("com.google.firebase:firebase-auth-ktx")
     implementation("com.google.firebase:firebase-firestore-ktx")
+    implementation("com.google.firebase:firebase-database-ktx")
 
     // Glide để tải hình ảnh
     implementation("com.github.bumptech.glide:glide:4.16.0")
@@ -50,6 +51,8 @@ dependencies {
     // Thành phần UI
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.cardview:cardview:1.0.0")
+
+
 
 
     // Thư viện kiểm thử
