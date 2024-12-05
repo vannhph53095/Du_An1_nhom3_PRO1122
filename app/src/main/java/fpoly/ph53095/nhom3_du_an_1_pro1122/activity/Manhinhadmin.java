@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -19,8 +20,9 @@ public class Manhinhadmin extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1; // Request code để chọn ảnh
 
     private ImageView accout_ic, mhyeuthichbutton, home_icon, btnBack, btnLogout, adminAvatar;
-    private Button btnChangeImg,  btnQuanLyFilm;
+    private Button btnChangeImg,  btnQuanLyFilm,quanlynguoidungmanhinh,tongDoanhThu;
     private String email;
+
     private static final String PREFS_NAME = "AdminPrefs";
     private static final String KEY_AVATAR_URI = "avatar_uri";
 
@@ -30,6 +32,14 @@ public class Manhinhadmin extends AppCompatActivity {
         setContentView(R.layout.activity_manhinhadmin);
 
         // Ánh xạ các thành phần giao diện
+        tongDoanhThu = findViewById(R.id.tongDoanhThu);
+        tongDoanhThu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(Manhinhadmin.this, Manhinhdoanhthu.class);
+                startActivity(intent);
+            }
+        });
         btnQuanLyFilm = findViewById(R.id.btnquanlyfilm);
         btnBack = findViewById(R.id.btnbackinmanhinhyeuthich);
         btnLogout = findViewById(R.id.btnlogout);
@@ -39,7 +49,14 @@ public class Manhinhadmin extends AppCompatActivity {
         home_icon = findViewById(R.id.home_icon);
         mhyeuthichbutton = findViewById(R.id.mhyeuthichbutton);
         accout_ic = findViewById(R.id.accout_ic);
-
+        quanlynguoidungmanhinh =findViewById(R.id.quanlynguoidungmanhinh);
+        quanlynguoidungmanhinh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(Manhinhadmin.this,Quanlynguoidung.class);
+                startActivity(intent);
+            }
+        });
         // Lấy email từ Intent
         email = getIntent().getStringExtra("email");
 

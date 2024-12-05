@@ -2,7 +2,6 @@ package fpoly.ph53095.nhom3_du_an_1_pro1122.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -63,18 +62,20 @@ public class ManHinhDangNhap extends AppCompatActivity {
                 return;
             }
 
+            // Đăng nhập Firebase Auth
             mAuth.signInWithEmailAndPassword(emailInput, passwordInput)
                     .addOnCompleteListener(this, task -> {
                         if (task.isSuccessful()) {
+                            // Chuyển sang Trang Chủ
                             FirebaseUser user = mAuth.getCurrentUser();
                             if (user != null) {
-                                String email = user.getEmail();
-                                Log.d("DEBUG_EMAIL", "Đăng nhập thành công với email: " + email);
-                                Toast.makeText(this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(ManHinhDangNhap.this,TrangChu.class);
+                                intent.putExtra("uid", user.getUid());
+                                intent.putExtra("email", user.getEmail());
 
-                                // Chuyển sang màn hình chính
-                                Intent intent = new Intent(ManHinhDangNhap.this, TrangChu.class);
-                                intent.putExtra("email", email);
+                                // Kiểm tra email và thêm dữ liệu
+
+
                                 startActivity(intent);
                                 finish();
                             }
@@ -83,5 +84,6 @@ public class ManHinhDangNhap extends AppCompatActivity {
                         }
                     });
         });
+
     }
 }

@@ -1,6 +1,6 @@
 package fpoly.ph53095.nhom3_du_an_1_pro1122.activity;
 
-import android.content.DialogInterface;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,7 +16,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -52,7 +52,7 @@ public class Manhinhquanlyfilm extends AppCompatActivity implements MovieAdapter
         email = getIntent().getStringExtra("email");
         home_icon = findViewById(R.id.home_icon);
         btnBack.setOnClickListener(v -> {
-            onBackPressed(); // Quay lại màn hình trước
+            onBackPressed();
         });
         home_icon.setOnClickListener(v -> {
             Intent intent = new Intent(Manhinhquanlyfilm.this, TrangChu.class);

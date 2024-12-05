@@ -85,10 +85,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
                     .update("isLiked", !isCurrentlyLiked)
                     .addOnSuccessListener(aVoid -> {
                         holder.yeuthichbutton.setImageResource(!isCurrentlyLiked ? R.drawable.heart_icon2 : R.drawable.heart_ic);
-                        Toast.makeText(context, !isCurrentlyLiked ? "Đã thêm vào danh sách yêu thích!" : "Đã xóa khỏi danh sách yêu thích!", Toast.LENGTH_SHORT).show();
+
                     })
                     .addOnFailureListener(e -> {
-                        Toast.makeText(context, "Lỗi khi cập nhật danh sách yêu thích!", Toast.LENGTH_SHORT).show();
+
                     });
         });
 
@@ -99,17 +99,17 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
                     .update("watched", movie.getWatched() + 1)
                     .addOnSuccessListener(aVoid -> {
                         movie.setWatched(movie.getWatched() + 1);
-                        Toast.makeText(context, "Bạn vừa xem: " + movie.getTitle(), Toast.LENGTH_SHORT).show();
+
                         if (movieClickListener != null) {
                             movieClickListener.onMovieClick(movie);
                         }
                     })
                     .addOnFailureListener(e -> {
-                        Toast.makeText(context, "Lỗi cập nhật lượt xem!", Toast.LENGTH_SHORT).show();
+
                     });
         });
 
-        // Xử lý sự kiện long click vào item
+
         holder.itemView.setOnLongClickListener(v -> {
             if (movieClickListener != null) {
                 movieClickListener.onMovieLongClick(movie);

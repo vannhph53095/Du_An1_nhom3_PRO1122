@@ -66,32 +66,45 @@
             android:textColor="#555555" />
     </LinearLayout>
 
-    <!-- Buttons -->
     <Button
+        android:id="@+id/tongDoanhThu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:backgroundTint="#86e0b0"
+        android:text="Tổng doanh thu"
         android:textColor="#ffffff"
-        android:layout_margin="16dp"
         android:textSize="16sp"
+
+
+        />
+
+    <Button
+        android:id="@+id/quanlynguoidungmanhinh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
         android:backgroundTint="#86e0b0"
         android:text="Quản Lý Người Dùng"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
 
 
-      />
+        />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btnquanlyfilm"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_margin="10dp"
+
         android:text="Quản Lý Film"
         android:backgroundTint="#86e0b0"
         android:textColor="#ffffff"
         android:textSize="16sp" />
 
 
-    <!-- Logout -->
+
     <LinearLayout
 
         android:layout_width="match_parent"

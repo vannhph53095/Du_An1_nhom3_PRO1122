@@ -7,4 +7,11 @@
         <item>Action</item>
         <item>Horror</item>
     </string-array>
+
+        <string-array name="package_options">
+            <item>Thường</item>
+            <item>Premium</item>
+        </string-array>
+
+
 </resources>

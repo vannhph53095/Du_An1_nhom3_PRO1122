@@ -5,4 +5,7 @@
     <color name="gray">#FF808080</color>
 <color name="red">#B02727</color>
     <color name="primary_color">#009688</color>
+    <color name="default_color">#FFFFFF</color> <!-- Màu nền mặc định -->
+    <color name="selected_color">#63BCE4</color> <!-- Màu nền khi được chọn -->
+
 </resources>
